@@ -1,91 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homepage</title>
-
-    <head>
-        <style>
-            #largerFont {
-                font-size: 20px;
-            }
-            
-            #mediumFont {
-                font-size: 18px;
-            }
-        </style>
-     </head>
-     
-
-
+    <title>Homepage</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #f2f2f2;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #000000;
+            text-align: center; 
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: #000000;
+            transition: background-color 0.25s;
+        }
+        .main {
+            height: calc(100% - 48px);
+            display: flex;
+            flex-direction: row;
+            margin-top: 48px;
+            position: relative;
+        }
+        .main::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: #000;
+        }
+        .button-link {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column; /* Changed to column for vertical stacking */
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            position: relative; /* Added for positioning the underline */
+        }
+        .button {
+            width: 100%;
+            height: 100%; /* Adjusted for the additional text */
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 30px;
+            transition: background-color 0.5s;
+            position: relative; /* Position relative to its parent */
+        }
+        .button:hover {
+            background-color: #fbf0ff;
+        }
+        #left {
+            background-color: #f2f2f2;
+        }
+        #right {
+            background-color: #ddd;
+        }
+        .button span {
+            display: block;
+        }
+        .button .subtext {
+            font-size: 18px; /* Smaller font size */
+            color: #a2a2a2; /* Light grey color */
+        }
+    </style>
 </head>
-
-
-<body> 
-    <h1 id="top">Calder Lenhart</h1>
-        <a href="research.html" id="largerFont">Research</a> <br>
-        <a href="photomain.html" id="largerFont">Photography</a> <br><br><br>
-        <a href="contact.html">Contact</a> <br>
-        <a href="external.html">External Links</a> <br>
-        <a href="about.html">About Me</a><br>
-
-
-<!-- Cmd+/ is the shortcut for commenting -->
-
-  
-<!-- target="blank" opens the link in a new tab instead of default-->
-
-<!-- Testing sup and sub elements -->
-<!-- <h1>Hello I'm <sup>1st</sup> <sub>John</sub> in town</h1> -->
-
-<!-- You don't want to mix HTML and CSS styling generally, and you can easily accomplish the below styling with CSS. However, for cases like this, doing this in HTML helps with accessibility, for example, if the person browsing your site was accessing it with a screenreader, it would be treated differently when being read with only access to HTML -->
-
-<!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem voluptates earum vero aperiam! <strong>dipisci sit, recusandae optio consequatur harum asperiores <em>incidunt tempore eos magnam,</em> at vitae ullam veritatis, est eligendi.</strong> A</p> -->
-
-<!-- How to access special characters in HTML: &_____; -->
-
-<!-- <h1>copyright &copy;</h1> -->
-
-<!-- How to nest lists together, including unordered lists (ul), list items (li), and ordered lists (ol), l-->
-<!-- <p> Some text Here</p> -->
-<!-- <a href="#top">Back to the top</a> -->
-
-<!-- <ul> -->
-    <!-- <li>john -->
-        <!-- <ol> -->
-            <!-- <li>html</li> -->
-            <!-- <li>css</li> -->
-        <!-- </ol> -->
-    <!-- </li> -->
-    <!-- <li>peter</li> -->
-    <!-- <li>sarah</li> -->
-
-
-
-    
-    <!-- <li> <a href="#">home</a>   </li> -->
-    <!-- <li> <a href="#">about</a>   </li> -->
-    <!-- <li> <a href="#">contact</a>   </li> -->
-<!-- </ul> -->
-
-<!--How to create tables in HTML-->
-
-
-<!-- <table> -->
-    <!-- <tr> -->
-        <!-- <th>some info</th> -->
-        <!-- <th>some info</th> -->
-        <!-- <th>some info</th> -->
-    <!-- </tr> -->
-    <!-- <tr> -->
-        <!-- <td> john </td> -->
-        <!-- <td>peter</td> -->
-        <!-- <td>sarah</td> -->
-    <!-- </tr> -->
-<!-- </table> -->
-
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="curriculumvitae.html">CV</a>
+    </div>
+    <div class="main">
+        <a href="creative.html" class="button-link" id="left">
+            <button class="button"><span class="button-text">Creative Work<span class="subtext">Calder Lenhart is a fine-art photographer based in Columbus, Ohio.</span></span></button>
+        </a>
+        <a href="research.html" class="button-link" id="right">
+            <button class="button"><span class="button-text">Academic Research<span class="subtext">Calder Lenhart is a 4th-year undergraduate student and researcher at Ohio State University, majoring in Physics and Astronomy/Astrophysics, with minors in Mathematics and Philosophy. He is currently preparing a paper on the atmospheric physics and composition of the exoplanet KELT-20b. </span></span></button>
+        </a>
+    </div>
 </body>
 </html>
