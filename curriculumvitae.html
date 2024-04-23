@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #f2f2f2;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #000000;
+            text-align: center; 
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: #000000;
+            transition: background-color 0.25s;
+        }
+        .main {
+            height: calc(100% - 48px);
+            display: flex;
+            flex-direction: row;
+            margin-top: 48px;
+            position: relative;
+        }
+        .main::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: #000;
+        /* Add space between navbar and content */
+        .content {
+            padding-top: 30px; /* Adjust as needed */
+        }
+
+        /* Style for the download button */
+        button {
+            margin-top: 20px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="curriculumvitae.html">CV</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="content">
+        <!-- Add a download button -->
+        <a href="documents/Calder_Lenhart_CV_23.4.2024.pdf" download>
+            <button>Download CV</button>
+        </a>
+
+        <!-- Insert the PDF using the embed tag -->
+        <embed src="documents/Calder_Lenhart_CV_23.4.2024.pdf" width="100%" height="1400px" type="application/pdf">
+    </div>
+</body>
+</html>

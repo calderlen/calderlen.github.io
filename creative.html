@@ -33,6 +33,7 @@
         }
         .main-content {
             margin-left: 70px;
+            margin-top: 200px; /* Add a top margin */
         }
 
         .grid {
@@ -40,10 +41,14 @@
             grid-template-columns: repeat(6, 1fr);
             grid-template-rows: repeat(2, 1fr);
             gap: 10px;
+            margin-top: 200px; /* Add a top margin */
+            margin-left: 150px;
+            margin-right: 150px;
+
         }
 
         .pane {
-            border: 1px solid #ccc;
+            border: 1px solid #ffffff;
             padding: 10px;
             text-align: center;
             transition: transform 0.3s;
@@ -55,13 +60,36 @@
 
         .pane img {
             width: 100%;
+            height: 80%; /* Adjust as needed */
+            object-fit: cover;
         }
 
         .pane h3 {
             margin: 0;
+            color: #ffffff;        }
+        .pane a {
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit color from parent */
         }
-
+        @media screen and (max-width: 600px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+                grid-auto-rows: minmax(300px, auto); /* Larger rows */
+                margin: 10px;
+                margin-left: 5%; /* Adjust as needed */
+                margin-right: 5%; /* Adjust as needed */
+            }
         
+            .pane {
+                font-size: 1.5em; /* Increase font size */
+                padding: 20px; /* Increase padding */
+            }
+        
+            .pane img {
+                height: 70%; /* Increase image height */
+                object-fit: cover;
+            }
+        }
     </style>
 </head>
 <body>
@@ -71,17 +99,48 @@
         <a href="contact.html">Contact</a>
     </div>
 
-    <div class="main-content">
-        <div class="grid">
-            <!-- Repeat this for each photo collection -->
-            <div class="pane">
-                <img src="path-to-sample-photo.jpg" alt="Sample Photo">
-                <h3>Title of Collection</h3>
-            </div>
-            <!-- ... -->
+    <div class="grid">
+        <!-- ... existing panes ... -->
+    
+        <div class="pane">
+            <a href="neighborhood-watch.html">
+                <img src="photographs/neighborhood-watch/house-up-hill-conneaut.jpg" alt="White House">
+                <h3>Neighborhood Watch</h3>
+            </a>
+        </div>
+        
+        <div class="pane">
+            <a href="studies-of-water.html">
+                <img src="photographs/studies-of-water/duck-in-creek-polandwoods.jpg" alt="Duck in Creek">
+                <h3>Studies of Water</h3>
+            </a>
+        </div>
+        <div class="pane">
+            <a href="studies-of-foliage.html">
+                <img src="photographs/studies-of-foliage/foliage-polandwoods.jpg" alt="Duck in Creek">
+                <h3>Studies of Foliage</h3>
+            </a>
+        </div>
+
+        <div class="pane">
+            <a href="portraits.html">
+                <img src="photographs/portraits/jonathan-portrait.jpg" alt="Duck in Creek">
+                <h3>Portaits</h3>
+            </a>
+        </div>
+        <div class="pane">
+            <a href="2024.html">
+                <img src="photographs/2024/canyonlands-tree.jpg" alt="Duck in Creek">
+                <h3>2024</h3>
+            </a>
+        </div>
+        <div class="pane">
+            <a href="13.4.2024.html">
+                <img src="photographs/13-4-24/underexposed-brick-building.jpg" alt="Duck in Creek">
+                <h3>13.4.2024</h3>
+            </a>
         </div>
     </div>
-
     <script>
         document.querySelectorAll('.folder-structure .folder').forEach(folder => {
             folder.addEventListener('click', e => {

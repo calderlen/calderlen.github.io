@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <style>
+
         body, html {
             height: 100%;
             margin: 0;
@@ -83,27 +84,78 @@
         #right {
             background-color: #ddd;
         }
+        #left .button:hover {
+            background: rgb(255, 200, 200); /* Red highlight */
+        }
+        #right .button:hover {
+            background: rgb(213, 213, 255); /* Blue highlight */
+        }
         .button span {
             display: block;
         }
         .button .subtext {
             font-size: 18px; /* Smaller font size */
-            color: #a2a2a2; /* Light grey color */
+            color: #818181; /* Light grey color */
+            font-style: normal; /* Normal font style */
+            width: 70%;
+            margin: auto; 
         }
+
+
+        @media screen and (max-width: 600px) {
+            .main {
+                flex-direction: column; /* Stack main children vertically on small screens */
+            }
+        
+            .main::after {
+                content: none; /* Remove the middle line */
+            }
+        
+            .button-link {
+                /* Reset flex properties for vertical layout */
+                flex: none;
+                width: 100%; /* Span the length of the screen */
+                height: 50vh; /* Split in half at the midpoint of the screen */
+                position: relative; /* Position relative to its parent */
+            }
+        
+            .button-link::after {
+                content: ''; /* Add a horizontal line */
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 1px;
+                background-color: #000;
+            }
+        
+            .button-link:last-child::after {
+                content: none; /* Remove the line from the last button link */
+            }
+        
+            .button {
+                /* Reset button properties for vertical layout */
+                width: 100%;
+                height: 100%;
+            }
+        }
+        
     </style>
+
 </head>
 <body>
     <div class="navbar">
         <a href="index.html">Home</a>
-        <a href="contact.html">Contact</a>
         <a href="curriculumvitae.html">CV</a>
+        <a href="contact.html">Contact</a>
     </div>
+    
     <div class="main">
-        <a href="creative.html" class="button-link" id="left">
-            <button class="button"><span class="button-text">Creative Work<span class="subtext">Calder Lenhart is a fine-art photographer based in Columbus, Ohio.</span></span></button>
-        </a>
-        <a href="research.html" class="button-link" id="right">
+        <a href="research.html" class="button-link" id="left">
             <button class="button"><span class="button-text">Academic Research<span class="subtext">Calder Lenhart is a 4th-year undergraduate student and researcher at Ohio State University, majoring in Physics and Astronomy/Astrophysics, with minors in Mathematics and Philosophy. He is currently preparing a paper on the atmospheric physics and composition of the exoplanet KELT-20b. </span></span></button>
+        </a>
+        <a href="creative.html" class="button-link" id="right">
+            <button class="button"><span class="button-text">Creative Work<span class="subtext">Calder Lenhart is a fine-art photographer based in Columbus, Ohio.</span></span></button>
         </a>
     </div>
 </body>
