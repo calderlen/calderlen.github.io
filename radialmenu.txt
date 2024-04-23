@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #f2f2f2;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #000000;
+            text-align: center; 
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .main {
+            height: calc(100% - 48px); /* Adjust height taking navbar height into account */
+            display: flex;
+            flex-direction: row;
+            margin-top: 48px; /* Same as navbar height */
+            position: relative; /* Needed for absolute positioning of the pseudo-element */
+        }
+        
+        .main::after {
+            content: ''; /* Pseudo-element content */
+            position: absolute;
+            left: 50%; /* Position at the center of the main container */
+            top: 0;
+            bottom: 0;
+            width: 1px; /* Thin line */
+            background-color: #000; /* Line color, can be changed as needed */
+        }
+        
+        .button-link {
+            flex: 1; /* Ensures that the link takes up half the space */
+            height: 100%; /* Full height */
+            display: flex; /* Enables flex properties for centering */
+            align-items: center; /* Vertical centering */
+            justify-content: center; /* Horizontal centering */
+            text-decoration: none; /* No underline */
+        }
+        .button {
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            border: none; /* Remove borders */
+            outline: none; /* Remove focus outline */
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 30px; /* Larger font size for visibility */
+            transition: background-color 0.5s; /* Smooth background color transition */
+        }
+        .button:hover {
+            background-color: #bcbcbc; /* Darker background color on hover */
+        }
+        #left {
+            background-color: #f2f2f2;
+        }
+        #right {
+            background-color: #ddd;
+        }
+
+/* Circular menu styles */
+.circular-menu-research, .circular-menu-creative {
+    position: fixed; /* Fixed position relative to the viewport */
+    top: 20%;
+    width: 400px;
+    height: 250px;
+    margin-top: 5rem;
+}
+
+.circular-menu-research {
+    right: 10vw; /* 10% of the viewport width from the right */
+}
+
+.circular-menu-creative {
+    left: 10vw; /* 10% of the viewport width from the left */
+}
+
+.circular-menu-research__button, .circular-menu-creative__button {
+    display: none;
+}
+
+.circular-menu-research__button:checked + .circular-menu-research__icon,
+.circular-menu-creative__button:checked + .circular-menu-creative__icon {
+    transform: scale(0.8);
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.circular-menu-research__button:checked + .circular-menu-research__icon .hamburger-bar,
+.circular-menu-creative__button:checked + .circular-menu-creative__icon .hamburger-bar {
+    background: #fff;
+    display: block;
+    width: 25px;
+    height: 3px;
+    left: 50%;
+    margin-left: -12.5px;
+    margin-top: -1.5px;
+    position: absolute;
+    top: 50%;
+    transition: transform 0.2s;
+}
+
+.circular-menu-research__button:checked + .circular-menu-research__icon .hamburger-bar:nth-child(1),
+.circular-menu-creative__button:checked + .circular-menu-creative__icon .hamburger-bar:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.circular-menu-research__button:checked + .circular-menu-research__icon .hamburger-bar:nth-child(2),
+.circular-menu-creative__button:checked + .circular-menu-creative__icon .hamburger-bar:nth-child(2) {
+    transform: scale(0.1, 1);
+}
+
+.circular-menu-research__button:checked + .circular-menu-research__icon .hamburger-bar:nth-child(3),
+.circular-menu-creative__button:checked + .circular-menu-creative__icon .hamburger-bar:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.circular-menu-research__icon, .circular-menu-creative__icon {
+    background: #fb8a8a; /* Red background for the research menu icon */
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    height: 80px;
+    line-height: 80px;
+    margin-left: -40px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    transform: translate3d(0, 0, 0);
+    transition: transform ease-out 0.2s;
+    width: 80px;
+    cursor: pointer;
+    transform: scale(1.1);
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+}
+
+.circular-menu-research__icon:hover, .circular-menu-creative__icon:hover {
+    transform: scale(1.2);
+}
+
+/* Shared item styles */
+.circular-menu-research__item{
+    background: #fb8a8a; /* Red background for the research menu items */
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    height: 80px;
+    line-height: 80px;
+    margin-left: -40px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    width: 80px;
+    font-size: 32px;
+    opacity: 0;
+    pointer-events: none; /* Prevents clicking on the hidden items */
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.circular-menu-research__item:hover {
+    color: #dc143c;
+    background: #f08080;
+}
+
+.circular-menu-research__item:active, .circular-menu-research__item:focus,
+.circular-menu-creative__item:active, .circular-menu-creative__item:focus {
+    color: #8b0000;
+}
+.circular-menu-creative__item{
+    background: #8aa4fb; /* Red background for the research menu items */
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    height: 80px;
+    line-height: 80px;
+    margin-left: -40px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    width: 80px;
+    font-size: 32px;
+    opacity: 0;
+    pointer-events: none; /* Prevents clicking on the hidden items */
+    transition: transform 0.5s, opacity 0.5s;
+}
+.circular-menu-creative__item:hover {
+    color: #146bdc;
+    background: #808ff0;
+}
+/* Positioning each item for the research menu */
+.circular-menu-research__button:checked ~ .circular-menu-research__item:nth-of-type(1) { transform: rotate(0deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-research__button:checked ~ .circular-menu-research__item:nth-of-type(2) { transform: rotate(60deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-research__button:checked ~ .circular-menu-research__item:nth-of-type(3) { transform: rotate(120deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-research__button:checked ~ .circular-menu-research__item:nth-of-type(4) { transform: rotate(180deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-research__button:checked ~ .circular-menu-research__item:nth-of-type(5) { transform: rotate(240deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-research__button:checked ~ .circular-menu-research__item:nth-of-type(6) { transform: rotate(300deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+
+
+/* Positioning each item for the creative menu */
+.circular-menu-creative__button:checked ~ .circular-menu-creative__item:nth-of-type(1) { transform: rotate(0deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-creative__button:checked ~ .circular-menu-creative__item:nth-of-type(2) { transform: rotate(60deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-creative__button:checked ~ .circular-menu-creative__item:nth-of-type(3) { transform: rotate(120deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-creative__button:checked ~ .circular-menu-creative__item:nth-of-type(4) { transform: rotate(180deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-creative__button:checked ~ .circular-menu-creative__item:nth-of-type(5) { transform: rotate(240deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+.circular-menu-creative__button:checked ~ .circular-menu-creative__item:nth-of-type(6) { transform: rotate(300deg) translateX(-105px); opacity: 1; pointer-events: auto; }
+
+
+/* Creative menu specific styles */
+.circular-menu-creative .circular-menu__icon,
+.circular-menu-creative .circular-menu__item {
+    background: #8abbfb; /* Blue background for the creative menu items */
+}
+
+.circular-menu-creative .circular-menu__item:hover {
+    background: #6495ed; /* Darker blue on hover for the creative menu items */
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="curriculumvitae.html">CV</a>
+        <a href="instgram.html">Instagram</a>
+        <a href="linkedin.html">GitHub</a>
+
+    </div>
+    <div class="main">
+        <!-- Updated button links for full width -->
+        <a href="creative.html" class="button-link" id="left">
+            <button class="button">Creative Work</button>
+        </a>
+        <a href="external.html" class="button-link" id="right">
+            <button class="button">Academic Research</button>
+        </a>
+    </div>
+    <nav class="circular-menu-research">
+        <input type="checkbox" id="circular-menu-research" class="circular-menu-research__button" checked>
+        <label for="circular-menu-research" class="circular-menu-research__icon">
+            <div class="hamburger-bar"></div>
+            <div class="hamburger-bar"></div>
+            <div class="hamburger-bar"></div>
+        </label>
+        <a href="#" class="circular-menu-research__item"><i class="fa fa-chrome"></i></a>
+        <a href="#" class="circular-menu-research__item"><i class="fa fa-firefox"></i></a>
+        <a href="#" class="circular-menu-research__item"><i class="fa fa-edge"></i></a>
+        <a href="#" class="circular-menu-research__item"><i class="fa fa-safari"></i></a>
+        <a href="#" class="circular-menu-research__item"><i class="fa fa-opera"></i></a>
+        <a href="#" class="circular-menu-research__item"><i class="fa fa-opera"></i></a>
+
+
+    </nav>
+    <nav class="circular-menu-creative">
+        <input type="checkbox" id="circular-menu-creative" class="circular-menu-creative__button" checked>
+        <label for="circular-menu-creative" class="circular-menu-creative__icon">
+            <div class="hamburger-bar"></div>
+            <div class="hamburger-bar"></div>
+            <div class="hamburger-bar"></div>
+        </label>
+        <a href="#" class="circular-menu-creative__item"><i class="fa fa-chrome"></i></a>
+        <a href="#" class="circular-menu-creative__item"><i class="fa fa-firefox"></i></a>
+        <a href="#" class="circular-menu-creative__item"><i class="fa fa-edge"></i></a>
+        <a href="#" class="circular-menu-creative__item"><i class="fa fa-safari"></i></a>
+        <a href="#" class="circular-menu-creative__item"><i class="fa fa-opera"></i></a>
+        <a href="#" class="circular-menu-creative__item"><i class="fa fa-opera"></i></a>
+
+
+    </nav>
+</body>
+</html>
