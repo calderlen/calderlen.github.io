@@ -7,7 +7,6 @@
     <style>
         .navbar a {
             float: left;
-            display: block;
             color: #000000;
             text-align: center; 
             padding: 14px 16px;
@@ -15,8 +14,6 @@
             font-weight: bold;
             font-size: 18px;
             font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-
         }
 
         .navbar a:hover {
@@ -25,7 +22,6 @@
             transition: background-color 0.25s;
             font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
-
         }
 
         body {
@@ -34,10 +30,17 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
+        .research-item a {
+            color: blue;
+            text-decoration: underline;
+        }
+
         .container {
             margin: auto;
             overflow: hidden;
         }
+
         .main-section {
             padding: 35px;
             background-color: #fff;
@@ -47,82 +50,90 @@
             flex-direction: column;
             justify-content: space-between;
         }
+
         .main-section h1 {
             font-size: 48px;
             line-height: 1.6;
         }
+
         .main-section h2 {
             font-size: 40px;
             line-height: 1.6;
         }
+
         .main-section h3 {
             font-size: 32px;
             line-height: 1.6;
         }
+
         .main-section p {
             line-height: 1.6;
             justify-content: space-between;
             font-size: 24px;
         }
+
         .text-content {
             flex: 3;
         }
+
         .plot-content {
             flex: 2; 
         }
+
         .plot-content img {
-            width: 100%; /* This means the image will take up 100% of the .plot-content width */
-            height: auto; /* Maintain aspect ratio */
+            width: 100%;
+            height: auto;
         }
-        @media screen and (max-width: 768px) { /* Adjust as needed */
+
+        @media screen and (max-width: 768px) {
             .research-item {
                 flex-direction: column;
             }
             .text-content, .plot-content {
-                flex: auto; /* Reset flex */
+                flex: auto;
             }
         }
+
         .research-item {
             display: flex;
             position: relative;
-            padding-left: 20px; /* Add padding to the left of the text */
+            padding-left: 20px;
             position: relative;
-            margin-bottom: 20px; /* Add margin below each research item */
+            margin-bottom: 20px;
         }
         
         .research-item::before {
             content: attr(data-date);
             position: absolute;
             left: 0;
-            font-size: 2em; /* Adjust as needed */
-            left: -20px; /* Position the date to the left of the padding */
+            font-size: 2em;
+            left: -20px;
         }
         
         .research-item::after {
             content: '';
             position: absolute;
-            left: -20px; /* Position the line to the left of the padding */
+            left: -20px;
             width: 10%;
-            border-top: 3px solid #000; /* Adjusted for thickness */
+            border-top: 3px solid #000;
         }
         
         .plot-content {
             flex: 2; 
-            margin-left: 20px; /* Add margin to the left of the plot content */
+            margin-left: 20px;
         }
+        
         .github-icon {
-            background-image: url('/icons/github-logo.png'); /* Replace 'path/to/your/github-icon.png' with the actual path to your GitHub icon */
-            background-size: 32px 32px; /* Set the size of your GitHub icon */
+            background-image: url('/icons/github-logo.png');
+            background-size: 32px 32px;
             width: 32px;
             height: 32px;
             display: block;
             float: right;
             margin-top: 7px;
-            margin-right: 30px; /* Adjust the right margin as needed */
+            margin-right: 30px;
             background-repeat: no-repeat;
-
-          }
-        
+        }
     </style>
 </head>
 <body>
@@ -131,7 +142,8 @@
         <a href="curriculumvitae.html">CV</a>
         <a href="contact.html">Contact</a>
         <a href="https://github.com/calderlen" class="github-icon"></a>
-    
+    </div> <!-- Added closing </div> tag here -->
+
     <div class="container">
         <div class="timeline"></div>
         <div class="main-section">
@@ -147,7 +159,6 @@
                 </div>
             </div>
             <div class="research-item" data-date="2023">
-
                 <div class="text-content">
                     <h3>Linking Writing Processes to Writing Quality with Histogram-based Gradient Boosting Regression Tree</h3>
                     <p>I participated in the Linking Writing Processes to Writing Quality Kaggle competition, concluding in January 2024. I engnineered dozens of features from provided keystroke log data based on recent computational linguistics and psychology literature, applied scikit-learn models, analyzed feature importance and model performance, and placed in the 63.3% on the <a href="https://ui.adsabs.harvard.edu/abs/2024AAS...24317909L/abstract">Efficiency Leaderboard</a>. </p>
