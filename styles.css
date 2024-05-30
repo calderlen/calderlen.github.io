@@ -1,0 +1,80 @@
+.navbar, .navbar-dark {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    background-color: #f2f2f2;
+}
+
+.navbar-dark {
+    background-color: #000;
+}
+
+.navbar a, .navbar-dark a {
+    float: left;
+    display: block;
+    text-align: center; 
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.navbar a {
+    color: #000000;
+}
+
+.navbar-dark a {
+    color: #fff;
+}
+
+.navbar a:hover, .navbar-dark a:hover {
+    background-color: #ddd;
+    color: #000000;
+    transition: background-color 0.25s;
+}
+
+.icon {
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    display: block;
+    float: right;
+    margin-top: 7px;
+    margin-right: 30px;
+    background-repeat: no-repeat;
+}
+
+.github-icon {
+    background-image: url('/icons/github-logo.png');
+}
+
+.github-icon-inverted {
+    background-image: url('/icons/github-logo-inverse.png');
+}
+
+.linkedin-icon {
+    background-image: url('/icons/linkedin-logo.png');
+}
+
+.linkedin-icon-inverted {
+    background-image: url('/icons/linkedin-logo-inverse.png');
+}
+
+
+
+#loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: #000 url('icons/loading-gif-black.gif') 50% 50% no-repeat;
+}
