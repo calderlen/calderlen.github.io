@@ -63,17 +63,11 @@
             object-fit: contain;
             border: 35px solid #000000;
         }
-        .github-icon {
-            background-image: url('/icons/github-logo.png');
-            background-size: 32px 32px;
-            width: 32px;
-            height: 32px;
-            display: block;
-            float: right;
-            margin-top: 7px;
-            margin-right: 30px;
-            background-repeat: no-repeat;
-            filter: invert(1);
+        @media screen and (max-width: 600px) {
+            .navbar a {
+            font-size: 12px; 
+            padding: 10px 10px; /* Reduce padding */
+            }
         }
     </style>
 </head>
