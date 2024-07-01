@@ -80,12 +80,3 @@
     z-index: 9999;
     background: #000 url('icons/loading-gif-black.gif') 50% 50% no-repeat;
 }
-
-.short-and-sweet {
-    font-size: 46pt;
-    font-family: 'Dancing Script', cursive; /* Replace 'Dancing Script' with your chosen font */
-    text-align: center;
-    margin-bottom: 20px; /* Adjust as needed for spacing */
-    border-bottom: 2px solid #000; /* Creates a division line */
-    padding-bottom: 10px; /* Spacing between text and division line */
-}

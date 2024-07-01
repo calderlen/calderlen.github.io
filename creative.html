@@ -46,25 +46,31 @@
             text-decoration: none;
             color: inherit;
         }
+
         @media screen and (max-width: 600px) {
             .grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(1, 1fr);
                 grid-auto-rows: minmax(300px, auto);
                 margin: 10px;
                 margin-left: 5%;
                 margin-right: 5%;
             }
-        
+            .navbar a {
+                font-size: 12px; 
+                padding: 10px 10px; /* Reduce padding */
+            }
+
             .pane {
                 font-size: 1.5em;
                 padding: 20px;
             }
-        
+
             .pane img {
                 height: 70%;
                 object-fit: cover;
             }
-        }
+    }
+
         #loader {
             position: fixed;
             left: 0;
@@ -74,12 +80,7 @@
             z-index: 9999;
             background: #000 url('icons/loading-gif-black.gif') 50% 50% no-repeat;
         }
-        @media screen and (max-width: 600px) {
-            .navbar a {
-            font-size: 12px; 
-            padding: 10px 10px; /* Reduce padding */
-            }
-        }
+
 
     </style>
 </head>
