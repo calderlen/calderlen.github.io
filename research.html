@@ -3,21 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-
     <title>Research</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
         body {
-            font-family: 'Roboto', serif;
+            font-family: 'Lato', serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-        }
-
-
-        .research-item a {
-            color: blue;
-            text-decoration: underline;
         }
 
         .container {
@@ -51,17 +44,53 @@
         }
 
         .main-section p {
-            line-height: 1.6;
+            line-height: 2.0;
             justify-content: space-between;
             font-size: 24px;
         }
 
+        /* Indentation for hierarchical list */
+        .research-list {
+            list-style-type: none;
+            margin-left: 2em; /* indent level */
+            padding-left: 0;
+        }
+
+        .research-item {
+            display: flex;
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .research-item::before {
+            content: attr(data-date);
+            position: absolute;
+            left: -20px;
+            font-size: 2em;
+        }
+
+        .research-item::after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            width: 10%;
+            border-top: 0px solid #000;
+        }
+
+        .research-item a {
+            color: blue;
+            text-decoration: underline;
+        }
+
         .text-content {
             flex: 3;
+            margin-top: 2em;
         }
 
         .plot-content {
-            flex: 2; 
+            flex: 2;
+            margin-left: 20px;
         }
 
         .plot-content img {
@@ -69,84 +98,130 @@
             height: auto;
         }
 
+        .img-container {
+            display: flex;
+            gap: 10px; /* Adjust gap as needed */
+        }
+
         @media screen and (max-width: 768px) {
             .research-item {
                 flex-direction: column;
             }
-            .text-content, .plot-content {
+            .text-content,
+            .plot-content {
                 flex: auto;
+                margin-left: 0;
             }
+            .navbar a {
+            font-size: 12px; 
+            padding: 10px 10px; /* Reduce padding */
         }
-
-        .research-item {
-            display: flex;
-            position: relative;
-            padding-left: 20px;
-            position: relative;
-            margin-bottom: 20px;
         }
-        
-        .research-item::before {
-            content: attr(data-date);
-            position: absolute;
-            left: 0;
-            font-size: 2em;
-            left: -20px;
-        }
-        
-        .research-item::after {
-            content: '';
-            position: absolute;
-            left: -20px;
-            width: 10%;
-            border-top: 3px solid #000;
-        }
-        
-        .plot-content {
-            flex: 2; 
-            margin-left: 20px;
-
-        .navbar a {
-        font-size: 12px; 
-        padding: 10px 10px; /* Reduce padding */
-        }
-    }
-        
     </style>
 </head>
 <body>
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="cv.html">CV</a>
-        <a href="cv-art.html">CV(art)</a>
+        <a href="cv-art.html">Art CV</a>
         <a href="https://github.com/calderlen">GitHub</a>
-        <a href="https://www.instagram.com/calderlen" >Instagram</a>
+        <a href="https://www.instagram.com/calderlen">Instagram</a>
         <a href="contact.html">Contact</a>
     </div>
 
     <div class="container">
         <div class="timeline"></div>
         <div class="main-section">
-            <div class="research-item" data-date="2024">
-                <div class="text-content">
-                    <h3>High-Resolution Cross-Correlation Transmission Spectroscopy of KELT-20b</h3>
-                    <p>In January 2024, I presented a <a href="https://aas243-aas.ipostersessions.com/Default.aspx?s=89-34-93-49-20-C4-FB-46-1F-28-CD-79-11-D0-C0-38">poster</a> on my analysis of atmospheric physics of KELT-20b, an ultra hot Jupiter exoplanet. For a more detailed summary of what I presented, please see the <a href="https://ui.adsabs.harvard.edu/abs/2024AAS...24317909L/abstract">abstract</a>. I am currently preparing both a manuscript and an undergraduate thesis on this same topic. </p> 
-                </div>
-                <div class="plot-content">
-                    <img src="research-figures/KELT-20b.inverted-transmission-better.FeIFeII.CombinedWindCharacteristics_Combined-1.png" alt="Research Figure 2">
-                    <figcaption>This plot shows the wind speed variation of neutral iron and singly ionized iron detected in KELT-20b's atmosphere. Note that each species has roughly the same dynamics, but offset by ~2km/s. This offset suggests we are probing different altitudes in the atmosphere, an exciting, novel view into the three-dimensional dynamics of the atmosphere. </figcaption>
-                </div>
-            </div>
-            <div class="research-item" data-date="2023">
-                <div class="text-content">
-                    <h3>Linking Writing Processes to Writing Quality with Histogram-based Gradient Boosting Regression Tree</h3>
-                    <p>I participated in the Linking Writing Processes to Writing Quality Kaggle competition, concluding in January 2024. I engnineered dozens of features from provided keystroke log data based on recent computational linguistics and psychology literature, applied scikit-learn models, analyzed feature importance and model performance, and placed in the 63.3% on the <a href="https://ui.adsabs.harvard.edu/abs/2024AAS...24317909L/abstract">Efficiency Leaderboard</a>. </p>
-                </div>
-                <div class="plot-content">
-                    <img src="research-figures/physics5680-researchposter.png" alt="Research Figure 1">
-                    <figcaption>This poster summarizes my solution.</figcaption>
-                </div>
-            </div>
+            <h2>Research</h2>
+            <ul class="research-list">
+                <!-- Research Section -->
+                <li class="research-item" data-date="2023–present">
+                    <div class="text-content">
+                        <h3>High-Resolution Cross-Correlation Transmission Spectroscopy of KELT-20b</h3>
+                        <p>
+                            In January 2024, I presented a 
+                            <a href="https://aas243-aas.ipostersessions.com/Default.aspx?s=89-34-93-49-20-C4-FB-46-1F-28-CD-79-11-D0-C0-38">
+                                poster
+                            </a> 
+                            on my analysis of atmospheric physics of KELT-20b, an ultra hot Jupiter exoplanet. 
+                            For a more detailed summary, please see the 
+                            <a href="https://ui.adsabs.harvard.edu/abs/2024AAS...24317909L/abstract">abstract</a>. 
+                            I defended my 
+                            <a href="https://kb.osu.edu/handle/1811/105450">undergraduate thesis</a> 
+                            on this topic in December 2024 and am currently preparing a manuscript for submission 
+                            to a peer-reviewed journal in collaboration with 
+                            <a href="https://www.astronomy.ohio-state.edu/johnson.7240/">Dr. Marshall Johnson</a>, 
+                            <a href="https://www.jiwang.io/#/">Prof. Ji Wang</a>, et al.
+                        </p>
+                        <p>
+                            Using signal processing and statistical analysis, we identified previously undetected atoms 
+                            and ions and revealed wind speed asymmetry between opposite sides of the exoplanet attributable 
+                            to three-dimensional dynamical processes. Recently, we analyzed the dynamics of several atoms 
+                            during the planet's transit at an unprecedentedly high time resolution. This analysis enabled 
+                            us to map wind patterns to various underlying atmospheric circulation mechanisms by comparing 
+                            the results with computer models. We also provided a proof-of-concept constraint on KELT-20b’s 
+                            magnetic field strength by adapting recent magnetohydrodynamics theory to our data—representing, 
+                            to our knowledge, the first calculation of an exoplanet's magnetic field strength with transmission 
+                            spectra and the first observational constraint entirely.
+                        </p>
+                    </div>
+                    <div class="plot-content">
+                        <img src="research-figures/spectraIndArms.Fe I.KELT-20b.inverted-transmission-better-1.png" style="width: 60%; height: auto;">
+                        <figcaption>
+                        </figcaption>
+                        <div class="img-container">
+                            <img src="research-figures/KELT-20b.20190504.combined.Fe+.CCFs-shifted-1.png" style="width: 50%; height: auto;">
+                            <img src="research-figures/KELT-20b.20190504.combined.Fe+.SNR-Gaussian-1.png" style="width: 50%; height: auto;">
+                        </div>
+                        <figcaption>
+                            <img src="research-figures/KELT-20b.Fe+.combined.phase-binned+RVs-1.png" style="width: 60%; height: auto;">
+                    </div>
+                </li>
+                <li class="research-item" data-date="2022–2023">
+                    <div class="text-content">
+                        <h3>Hydrothermal synthesis and testing of metal oxide nanostructures</h3>
+                        <p>
+                            During my research assistantship at the NSF Center for Industrial Sensors and Measurements 
+                            with 
+                            <a href="https://mse.osu.edu/people/akbar.1">Prof. Sheikh Akbar</a>
+                            in the Ohio State Department of Materials Science and Engineering, I focused on 
+                            manufacturing nanoscale metal-oxide gas sensors (MOGS) aimed at detecting hazardous 
+                            gases at trace concentrations. My responsibilities included synthesizing nanostructures 
+                            of various compositions, depositing them on substrates with diodes, and testing their 
+                            sensitivity using electrical measurements. For reactive sensors, I documented their 
+                            morphology and composition with scanning electron microscopy and X-ray diffraction, 
+                            archiving the results in the 
+                            <a href="https://www.odorsdatabase.com/">Open Database of Resistive-type Sensors</a> 
+                            (ODORS). I also compiled sensor data from current literature into ODORS, with the aim 
+                            of developing a platform to identify trends in the selectivity and sensitivity of MOGS.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+
+            <h2>Projects</h2>
+            <ul class="research-list">
+                <!-- Projects Section -->
+                <li class="research-item" data-date="2023">
+                    <div class="text-content">
+                        <h3>Linking Writing Processes to Writing Quality with Histogram-based Gradient Boosting Regression Tree</h3>
+                        <p>
+                            I participated in the Linking Writing Processes to Writing Quality Kaggle competition, 
+                            concluding in January 2024. I engnineered dozens of features from provided keystroke log 
+                            data based on recent computational linguistics and psychology literature, applied 
+                            scikit-learn models, analyzed feature importance and model performance, and placed in 
+                            the 63.3% on the 
+                            <a href="https://www.kaggle.com/code/ryanholbrook/writing-processes-efficiency-lb">
+                                Efficiency Leaderboard
+                            </a>.
+                        </p>
+                    </div>
+                    <div class="plot-content">
+                        <img src="research-figures/physics5680-researchposter.png" alt="Research Figure 1" style="width: 50%; height: auto;">
+                        <figcaption>This poster summarizes my solution.</figcaption>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </body>

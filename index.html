@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Homepage - Calder Lenhart</title>
+    <meta name="description" content="Calder Lenhart's personal homepage. Learn about Calder Lenhart's research and photography.">
+    <meta name="keywords" content="Calder Lenhart, research, photography, Ohio State University, astrophysics, physics">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-
         body, html {
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: monospace;
         }
 
         .main {
@@ -47,9 +48,8 @@
             border: none;
             outline: none;
             cursor: pointer;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Lato', Courier, monospace;
             font-weight: bold;
-            font-style: italic;
             font-size: 30px;
             transition: background-color 0.5s;
             position: relative;
@@ -79,7 +79,6 @@
             width: 70%;
             margin: auto; 
         }
-
 
         @media screen and (max-width: 600px) {
             .main {
@@ -116,34 +115,50 @@
                 height: 100%;
             }
 
-
             .navbar a {
-            font-size: 12px; 
-            padding: 10px 10px; 
+                font-size: 12px; 
+                padding: 10px 10px; 
             }
         }
-
-        
     </style>
-
 </head>
 <body>
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="cv.html">CV</a>
-        <a href="cv-art.html">CV(art)</a>
+        <a href="cv-art.html">Art CV</a>
         <a href="https://github.com/calderlen">GitHub</a>
-        <a href="https://www.instagram.com/calderlen" >Instagram</a>
+        <a href="https://www.instagram.com/calderlen">Instagram</a>
         <a href="contact.html">Contact</a>
     </div>
     
     <div class="main">
         <a href="research.html" class="button-link" id="left">
-            <button class="button"><span class="button-text">Research<span class="subtext">Calder Lenhart is a fourth-year undergraduate student and researcher at Ohio State University, majoring in Physics and Astronomy/Astrophysics, with a minor in Mathematics. He is currently preparing a paper on the atmospheric physics and composition of the exoplanet KELT-20b. </span></span></button>
+            <button class="button"><span class="button-text">Research<span class="subtext">Calder Lenhart is a recent graduate and researcher at Ohio State University, with a B.S. in physics and astrophysics and minors in mathematics and history. He is preparing a paper on the atmospheric dynamics of ultra hot Jupiter exoplanet KELT-20b. </span></span></button>
         </a>
         <a href="creative.html" class="button-link" id="right">
-            <button class="button"><span class="button-text">Art<span class="subtext">Calder Lenhart is a fine-art photographer based in Columbus, Ohio.</span></span></button>
+            <button class="button"><span class="button-text">Photography<span class="subtext">Calder Lenhart is a photographer based in Columbus, Ohio.</span></span></button>
         </a>
     </div>
+    <footer style="text-align:left; font-size: 12px; padding: 10px;">
+        © 2020-2025 Calder Lenhart. All rights reserved.
+    </footer>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Calder Lenhart",
+      "url": "https://yourwebsite.com",
+      "sameAs": [
+        "https://www.instagram.com/calderlen",
+        "https://github.com/calderlen"
+      ],
+      "jobTitle": "Researcher and Photographer",
+      "alumniOf": "Ohio State University",
+      "knowsAbout": ["Physics", "Astrophysics", "Photography"]
+    }
+    </script>
 </body>
 </html>
