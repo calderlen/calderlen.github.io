@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage - Calder Lenhart</title>
+    <link rel="canonical" href="https://calderlen.github.io/">
+    <meta property="og:title" content="Calder Lenhart">
+    <meta property="og:description" content="Astrophysics researcher and photographer. Research on ultra-hot Jupiter atmospheres; selected projects and portfolio.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calderlen.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Calder Lenhart</title>
     <meta name="description" content="Calder Lenhart's personal homepage. Learn about Calder Lenhart's research and photography.">
-    <meta name="keywords" content="Calder Lenhart, research, photography, Ohio State University, astrophysics, physics">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
         body, html {
@@ -120,17 +125,29 @@
                 padding: 10px 10px; 
             }
         }
+
+        /* a11y/SEO helper */
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px; width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+            clip-path: inset(50%);
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
-    <div class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="cv.html">CV</a>
         <a href="cv-art.html">Art CV</a>
         <a href="https://github.com/calderlen">GitHub</a>
         <a href="https://www.instagram.com/calderlen">Instagram</a>
         <a href="contact.html">Contact</a>
-    </div>
+    </nav>
+
+    <h1 class="visually-hidden">Calder Lenhart</h1>
     
     <div class="main">
         <a href="research.html" class="button-link" id="left">
@@ -150,13 +167,13 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Calder Lenhart",
-      "url": "https://yourwebsite.com",
+      "url": "https://calderlen.github.io",
       "sameAs": [
         "https://www.instagram.com/calderlen",
         "https://github.com/calderlen"
       ],
-      "jobTitle": "Researcher and Photographer",
-      "alumniOf": "Ohio State University",
+      "jobTitle": "Astrophysics Researcher & Photographer",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "The Ohio State University" },
       "knowsAbout": ["Physics", "Astrophysics", "Photography"]
     }
     </script>
