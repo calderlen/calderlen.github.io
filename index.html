@@ -239,7 +239,7 @@
         }
 
         .clock {
-            position: fixed;
+            position: absolute;
             bottom: 25px;
             right: 15px;
             font-size: 0.85em;
@@ -374,10 +374,9 @@
             .scroll-indicator {
                 display: block;
                 position: fixed;
-                left: 30px;
-                width: 3px;
-                height: 40px;
-                background-color: #fff;
+                right: 15px;
+                width: 20px;
+                height: 20px;
                 z-index: 100;
                 opacity: 0.25;
                 transition: opacity 0.3s ease;
@@ -388,46 +387,47 @@
                 opacity: 1;
             }
 
-            .scroll-indicator.at-top {
+            .scroll-indicator-up.at-top {
                 opacity: 0 !important;
             }
 
-            .scroll-indicator.at-bottom {
+            .scroll-indicator-down.at-top {
+                animation: pulseBottom 2s ease-in-out infinite;
+            }
+
+            .scroll-indicator-down.at-bottom {
                 opacity: 0 !important;
+            }
+
+            .scroll-indicator-up.at-bottom {
+                animation: pulseBottom 2s ease-in-out infinite;
             }
 
             .scroll-indicator-down {
                 top: calc(50% + 24px);
             }
 
-            .scroll-indicator-down::after {
-                content: '';
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 0;
-                height: 0;
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-top: 14px solid #fff;
+            .scroll-indicator-down svg {
+                width: 100%;
+                height: 100%;
             }
 
             .scroll-indicator-up {
                 top: calc(50% - 24px);
             }
 
-            .scroll-indicator-up::after {
-                content: '';
-                position: absolute;
-                bottom: 100%;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 0;
-                height: 0;
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-bottom: 14px solid #fff;
+            .scroll-indicator-up svg {
+                width: 100%;
+                height: 100%;
+            }
+
+            @keyframes pulseBottom {
+                0%, 100% {
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 0.25;
+                }
             }
 
 
@@ -490,11 +490,19 @@
             <a href="mailto:lenhart.106@osu.edu">lenhart.106[at]osu.edu</a>
             <a href="mailto:calderlen@gmail.com">calderlen[at]gmail.com</a>
         </div>
-    </div>
 
-    <div class="clock" id="clock"></div>
-    <div class="scroll-indicator scroll-indicator-up"></div>
-    <div class="scroll-indicator scroll-indicator-down"></div>
+        <div class="clock" id="clock"></div>
+    </div>
+    <div class="scroll-indicator scroll-indicator-up">
+        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 0 L2 12 M10 0 L18 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+    </div>
+    <div class="scroll-indicator scroll-indicator-down">
+        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 20 L2 8 M10 20 L18 8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+    </div>
 
     <script>
         function updateClock() {
@@ -544,14 +552,22 @@
             // Check if at top or bottom
             if (isAtTop) {
                 scrollIndicatorUp.classList.add('at-top');
+                scrollIndicatorDown.classList.add('at-top');
+                scrollIndicatorUp.classList.remove('at-bottom');
+                scrollIndicatorDown.classList.remove('at-bottom');
             } else {
                 scrollIndicatorUp.classList.remove('at-top');
+                scrollIndicatorDown.classList.remove('at-top');
             }
             
             if (isAtBottom) {
                 scrollIndicatorDown.classList.add('at-bottom');
+                scrollIndicatorUp.classList.add('at-bottom');
+                scrollIndicatorDown.classList.remove('at-top');
+                scrollIndicatorUp.classList.remove('at-top');
             } else {
                 scrollIndicatorDown.classList.remove('at-bottom');
+                scrollIndicatorUp.classList.remove('at-bottom');
             }
             
             // Handle scrolling direction opacity
