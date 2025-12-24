@@ -25,230 +25,301 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #ddd;
             margin: 0;
             padding: 0;
-            background-color: #000;
-            color: #ccc;
         }
 
         .container {
-            margin: auto;
-            overflow: hidden;
+            max-width: 1400px;
+            margin: 160px auto 60px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 24px;
+            height: calc(100vh - 200px);
         }
 
-        .main-section {
-            padding: 35px;
-            background-color: #000;
-            color: #ccc;
-            margin-top: 50px;
-            border-radius: 5px;
+        .left-column {
+            flex: 0 0 280px;
+            display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 16px;
+            overflow-y: auto;
+            overflow-x: visible;
+            padding: 12px 12px 12px 12px;
+            margin: -12px 0 -12px -12px;
         }
 
-        .main-section h1 {
-            font-size: 48px;
-            line-height: 1.6;
+        .left-column::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .main-section h2 {
-            font-size: 32px;
-            letter-spacing: 2px;
-            text-transform: lowercase;
-            margin-bottom: 10px;
+        .left-column::-webkit-scrollbar-track {
+            background: #000;
         }
 
-        .main-section h3 {
-            font-size: 22px;
-            line-height: 1.5;
-            margin-top: 0;
-            margin-bottom: 8px;
+        .left-column::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
         }
 
-        .main-section p {
+        .left-column::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .right-column {
+            flex: 1;
+            min-width: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 8px;
+        }
+
+        .right-column::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .right-column::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        .right-column::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .right-column::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .pane {
+            position: relative;
+            border: 1px solid #333;
+            background-color: #050505;
+            padding: 6px 6px 10px 6px;
+            text-align: left;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+            font-size: 0.8em;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+        }
+
+        .pane.active {
+            border-color: #87CEEB;
+            box-shadow: 0 0 12px rgba(135, 206, 235, 0.3);
+        }
+
+        .pane::before {
+            content: attr(data-frame);
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            font-size: 0.65em;
+            color: #666;
+            z-index: 1;
+        }
+
+        .pane:hover {
+            transform: scale(1.02);
+            border-color: #87CEEB;
+            box-shadow: 0 0 12px rgba(135, 206, 235, 0.3);
+            z-index: 10;
+            position: relative;
+        }
+
+        .pane > img {
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            margin-bottom: 6px;
+        }
+
+        .pane:hover > img {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        .pane.active > img {
+            filter: grayscale(0%);
+        }
+
+        .pane.active:hover > img {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        .pane h3 {
+            margin: 6px 2px 0 0;
+            color: #fff;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .pane .date {
+            margin: 2px 2px 6px 0;
+            font-size: 0.7em;
+            color: #888;
+            display: block;
+        }
+
+        .pane a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .content-link {
+            color: #87CEEB;
+            text-decoration: underline;
+        }
+
+        .content-link:hover {
+            color: #fff;
+        }
+
+        .content-display {
+            display: none;
+            padding: 0;
+            color: #ccc;
             line-height: 1.8;
             font-size: 16px;
         }
 
-        /* Project cards */
-        .research-list {
-            list-style-type: none;
-            margin: 30px 0 0 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
+        .content-display.active {
+            display: block;
         }
 
-        .research-item {
-            position: relative;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            padding: 24px 24px 18px 24px;
-            margin: 0;
-            background-color: #050505;
-            border-radius: 10px;
-            border: 1px solid #111;
+        .content-display p {
+            margin: 12px 0;
         }
 
-        .research-item::before {
-            content: attr(data-date);
-            position: absolute;
-            top: 14px;
-            right: 24px;
-            font-size: 0.8em;
-            color: #777;
-        }
-
-        .research-item::after {
-            content: none;
-        }
-
-        .research-item a {
-            color: #ffd700;
-            text-decoration: underline;
-        }
-
-        .text-content {
-            flex: 1 1 280px;
+        .content-display h3 {
+            font-size: 32px;
+            margin-bottom: 16px;
             margin-top: 0;
+            color: #87CEEB;
+            font-weight: 500;
         }
 
-        .plot-content {
-            flex: 1 1 260px;
-            margin-left: 0;
-        }
-
-        .plot-content img {
+        .content-display img {
             width: 100%;
             height: auto;
+            margin: 12px 0;
+            filter: none;
+            transform: none;
         }
 
         .img-container {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            margin: 12px 0;
         }
 
-        @media screen and (max-width: 768px) {
-            .research-item {
-                flex-direction: column;
-            }
-            .text-content,
-            .plot-content {
-                flex: auto;
-                margin-left: 0;
-            }
-            .navbar a {
-            font-size: 12px; 
-            padding: 10px 10px; /* Reduce padding */
+        .img-container img {
+            flex: 1 1 calc(50% - 4px);
+            max-width: calc(50% - 4px);
         }
+
+        @media screen and (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                margin-top: 140px;
+                padding: 0 12px;
+                height: auto;
+            }
+
+            .left-column {
+                flex: 1;
+                width: 100%;
+                max-height: 400px;
+                margin: 0;
+                padding: 12px;
+            }
+
+            .right-column {
+                margin-top: 24px;
+                max-height: 600px;
+            }
         }
     </style>
 </head>
-<body>
+<body class="research-page">
     <a href="index.html" class="home-circle">Home</a>
     <div class="container">
-        <div class="timeline"></div>
-        <div class="main-section">
-            <h2>Research</h2>
-            <ul class="research-list">
-                <!-- Project: Ultra hot Jupiter KELT-20b -->
-                <li class="research-item" data-date="2023–present">
-                    <div class="text-content">
-                        <h3>Characterizing exoplanet atmospheres</h3>
-                        
-                        <p><strong>High-level overview:</strong></p>
-                        
-                        <p>Ultra hot Jupiters are an exceptional class of <a href="https://en.wikipedia.org/wiki/Exoplanet">exoplanets</a>. They rapidly orbit their host stars in close proximity and have puffy atmospheres that reach more than 2,200 Kelvin. They are expected to be <a href="https://en.wikipedia.org/wiki/Tidal_locking">tidally locked</a>, meaning one hemisphere permanently faces the star, causing a large temperature gradient across the planet. With high-quality observations, we can study the extreme physical processes governing these atmospheres. We observed one such exoplanet, KELT-20b, with the Potsdam Echelle Polarimetric and Spectroscopic Instrument (PEPSI) on the Large Binocular Telescope (LBT) located in Mt. Graham, Arizona.</p>
-                        
-                        <p>To examine the atmosphere, we collect the light from the host star that passes through the exoplanet's atmosphere during a <a href="https://en.wikipedia.org/wiki/Astronomical_transit">transit</a>, some of which is absorbed by constituent elements in the atmosphere. Due to the <a href="https://en.wikipedia.org/wiki/Quantum_mechanics">quantum</a> nature of electrons, each atom and molecule only absorbs photons at characteristic wavelengths, which allows us to identify the atmospheric constituents by examining the wavelengths where light is absorbed. Typically, exoplanet researchers take many exposures over the course of a transit, then combine their data to create a <a href="https://en.wikipedia.org/wiki/Absorption_spectroscopy#Absorption_spectrum">transmission spectrum</a> that shows how much light is absorbed at each wavelength. Instead of measuring the transmission spectrum exclusively, it is often advantageous to calculate the similarity between the observed spectrum and a computer-generated spectrum with the <a href="https://en.wikipedia.org/wiki/Cross-correlation">cross-correlation</a> method.</p>
-        
-                        <p>By analyzing these absorption features in detail, we can not only pinpoint the chemical makeup of the exoplanet's atmosphere but also probe the underlying physical processes. We can infer temperature gradients, wind speeds, and circulation patterns. These inferences are strengthened through comparison to theoretical models.</p>
-                        
-                        <p>As the hot Jupiter transits, light from the star passes through different slices of the atmosphere, meaning that our transmission spectrum should evolve over time. As mentioned, observers commonly combine all exposures during transit together to maximize signal strength. Our research is unique in that we do not combine all exposures into an averaged spectrum, but instead look at changes in the data with respect to time. This means that we can probe individual longitudinal slices of the atmosphere, gaining a considerably more detailed view of the atmospheric physics.</p>
+        <div class="left-column">
+            <div class="pane active" data-frame="f01" data-date="2023–present">
+                <img src="research-figures/kelt-20b.png" alt="KELT-20b" loading="lazy" decoding="async">
+                <h3>Characterizing exoplanet atmospheres</h3>
+                <div class="date">2023–present</div>
+            </div>
 
-                        <p><strong>For other exoplanet researchers:</strong></p>
-                        <p>In January 2024, I presented a 
-                            <a href="https://aas243-aas.ipostersessions.com/Default.aspx?s=89-34-93-49-20-C4-FB-46-1F-28-CD-79-11-D0-C0-38">
-                            poster</a> at the 243rd American Astronomical Society meeting on my analysis of atmospheric physics ultra hot Jupiter KELT-20b.
-                            For a more detailed summary, please see the 
-                            <a href="https://ui.adsabs.harvard.edu/abs/2024AAS...24317909L/abstract">abstract</a>. 
-                            I defended my 
-                            <a href="https://kb.osu.edu/handle/1811/105450">undergraduate thesis</a> 
-                            on this topic in December 2024 and submitted a manuscript 
-                            to the Astronomical Journal in March 2025. This work was completed in collaboration with 
-                            <a href="https://www.astronomy.ohio-state.edu/johnson.7240/">Dr. Marshall Johnson</a>, 
-                            <a href="https://www.jiwang.io/#/">Prof. Ji Wang</a>, et al.
-                        </p>
-                        <p>KELT-20b is a well-studied ($T_{\text{eq}}=2262$ K) ultra hot Jupiter, but its multidimensional atmospheric structure remains unconstrained. We performed high-resolution cross-correlation transmission spectroscopy (HRCCTS) on a single transit time series of KELT-20b, observed with PEPSI on the LBT. Upon combining nineteen in-transit exposures, we detect Fe I $(11.9\sigma)$ and Fe II $(23.7\sigma)$ and tentatively detect Na I $(3.4\sigma)$ and Cr I $(3.3\sigma)$. The full-transit velocity offsets of the strongest absorbers are $\Delta V_{\text{Fe I}} = -1.0 \pm 0.7$ km s$^{-1}$ and $\Delta V_{\text{Fe II}}= 0.0\pm 0.5$ km s$^{-1}$, which are mostly inconsistent with previously published values for KELT-20b, although the previous measurements are mostly inconsistent with each other. By correcting for discrepant systemic velocity solutions of up to $1.7$ km s$^{-1}$ between studies, our Fe II offset becomes consistent with previous measurements ($\leq 1.7\sigma$), while Fe I remains significantly less blueshifted than in earlier studies ($\geq 2.2-4.5\sigma$). We propose a set of detection criteria to improve future reproducibility in HRCCTS work. Phase-resolving the Fe I and Fe II absorption signatures into eight orbital phase bins reveals distinct dynamical regimes: Fe II exhibits a strong phase-dependent blueshift from ingress to egress along with significant limb asymmetry, while Fe I shows weaker signals and a more modest blueshift with phase. These patterns indicate day-to-night winds and suggest scale height differences are a significant driver of limb asymmetry in KELT-20b.</p>
-            
-                    </div>
-                    
-                    <div class="plot-content">
-                        <div class="img-container">
-                            <img src="research-figures/spectraIndArms.Fe I.KELT-20b.inverted-transmission-better-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
-                            <img src="research-figures/spectraIndArms.Fe II.KELT-20b.inverted-transmission-better-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
-                        </div>
-                        <div class="img-container">
-                            <img src="research-figures/KELT-20b.20190504.combined.Fe.CCFs-shifted-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
-                            <img src="research-figures/KELT-20b.20190504.combined.Fe+.CCFs-shifted-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
-                        </div>
-                        <div class="img-container">
-                            <img src="research-figures/KELT-20b.20190504.combined.Fe..halves.SNR-Gaussian-Asymmetry-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
-                            <img src="research-figures/KELT-20b.20190504.combined.Fe+..halves.SNR-Gaussian-Asymmetry (1)-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
-                        </div>
-                        <div class="img-container">
-                            <img src="research-figures/no-fit-KELT-20b.Fe.combined.phase-binned+RVs-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
-                            <img src="research-figures/KELT-20b.Fe+.combined.phase-binned+RVs-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
-                        </div>
-                    </div>
-                </li>
+            <div class="pane" data-frame="f02" data-date="2022–2023">
+                <img src="research-figures/kelt-20b.png" alt="Metal oxide sensors" loading="lazy" decoding="async">
+                <h3>Hydrothermal synthesis and testing of metal oxide nanostructures</h3>
+                <div class="date">2022–2023</div>
+            </div>
 
-                <!-- Project: Metal oxide gas sensors -->
-                <li class="research-item" data-date="2022–2023">
-                    <div class="text-content">
-                        <h3>Hydrothermal synthesis and testing of metal oxide nanostructures</h3>
-                        <p>
-                            During my research assistantship at the NSF Center for Industrial Sensors and Measurements 
-                            with 
-                            <a href="https://mse.osu.edu/people/akbar.1">Prof. Sheikh Akbar</a>
-                            in the Ohio State Department of Materials Science and Engineering, I focused on 
-                            manufacturing nanoscale metal-oxide gas sensors (MOGS) aimed at detecting hazardous 
-                            gases at trace concentrations. My responsibilities included synthesizing nanostructures 
-                            of various compositions, depositing them on substrates with diodes, and testing their 
-                            sensitivity using electrical measurements. For reactive sensors, I documented their 
-                            morphology and composition with scanning electron microscopy and X-ray diffraction, 
-                            archiving the results in the 
-                            <a href="https://www.odorsdatabase.com/">Open Database of Resistive-type Sensors</a> 
-                            (ODORS). I also compiled sensor data from current literature into ODORS, with the aim 
-                            of developing a platform to identify trends in the selectivity and sensitivity of MOGS.
-                        </p>
-                    </div>
-                </li>
+            <div class="pane" data-frame="f03" data-date="2023">
+                <img src="research-figures/physics5680-researchposter.png" alt="Writing processes" loading="lazy" decoding="async">
+                <h3>Linking Writing Processes to Writing Quality</h3>
+                <div class="date">2023</div>
+            </div>
+        </div>
 
-                <!-- Project: Writing processes Kaggle competition -->
-                <li class="research-item" data-date="2023">
-                    <div class="text-content">
-                        <h3>Linking Writing Processes to Writing Quality with Histogram-based Gradient Boosting Regression Tree</h3>
-                        <p>
-                            I participated in the Linking Writing Processes to Writing Quality Kaggle competition, 
-                            concluding in January 2024. I engnineered dozens of features from provided keystroke log 
-                            data based on recent computational linguistics and psychology literature, applied 
-                            scikit-learn models, analyzed feature importance and model performance, and placed in 
-                            the 63.3% on the 
-                            <a href="https://www.kaggle.com/code/ryanholbrook/writing-processes-efficiency-lb">
-                                Efficiency Leaderboard
-                            </a>.
-                        </p>
-                    </div>
-                    <div class="plot-content">
-                        <img src="research-figures/physics5680-researchposter.png" alt="Research Figure 1" loading="lazy" decoding="async" style="width: 50%; height: auto;">
-                        <figcaption>This poster summarizes my solution.</figcaption>
-                    </div>
-                </li>
-            </ul>
+        <div class="right-column">
+            <div class="content-display active" data-content="f01">
+                <h3>Characterizing exoplanet atmospheres</h3>
+                <p><strong>High-level overview:</strong></p>
+                <p>Ultra hot Jupiters are an exceptional class of <a href="https://en.wikipedia.org/wiki/Exoplanet" class="content-link">exoplanets</a>. They rapidly orbit their host stars in close proximity and have puffy atmospheres that reach more than 2,200 Kelvin. They are expected to be <a href="https://en.wikipedia.org/wiki/Tidal_locking" class="content-link">tidally locked</a>, meaning one hemisphere permanently faces the star, causing a large temperature gradient across the planet. With high-quality observations, we can study the extreme physical processes governing these atmospheres. We observed one such exoplanet, KELT-20b, with the Potsdam Echelle Polarimetric and Spectroscopic Instrument (PEPSI) on the Large Binocular Telescope (LBT) located in Mt. Graham, Arizona.</p>
+                <p>To examine the atmosphere, we collect the light from the host star that passes through the exoplanet's atmosphere during a <a href="https://en.wikipedia.org/wiki/Astronomical_transit" class="content-link">transit</a>, some of which is absorbed by constituent elements in the atmosphere. Due to the <a href="https://en.wikipedia.org/wiki/Quantum_mechanics" class="content-link">quantum</a> nature of electrons, each atom and molecule only absorbs photons at characteristic wavelengths, which allows us to identify the atmospheric constituents by examining the wavelengths where light is absorbed. Typically, exoplanet researchers take many exposures over the course of a transit, then combine their data to create a <a href="https://en.wikipedia.org/wiki/Absorption_spectroscopy#Absorption_spectrum" class="content-link">transmission spectrum</a> that shows how much light is absorbed at each wavelength. Instead of measuring the transmission spectrum exclusively, it is often advantageous to calculate the similarity between the observed spectrum and a computer-generated spectrum with the <a href="https://en.wikipedia.org/wiki/Cross-correlation" class="content-link">cross-correlation</a> method.</p>
+                <p>By analyzing these absorption features in detail, we can not only pinpoint the chemical makeup of the exoplanet's atmosphere but also probe the underlying physical processes. We can infer temperature gradients, wind speeds, and circulation patterns. These inferences are strengthened through comparison to theoretical models.</p>
+                <p>As the hot Jupiter transits, light from the star passes through different slices of the atmosphere, meaning that our transmission spectrum should evolve over time. As mentioned, observers commonly combine all exposures during transit together to maximize signal strength. Our research is unique in that we do not combine all exposures into an averaged spectrum, but instead look at changes in the data with respect to time. This means that we can probe individual longitudinal slices of the atmosphere, gaining a considerably more detailed view of the atmospheric physics.</p>
+                <p><strong>For other exoplanet researchers:</strong></p>
+                <p>In January 2024, I presented a <a href="https://aas243-aas.ipostersessions.com/Default.aspx?s=89-34-93-49-20-C4-FB-46-1F-28-CD-79-11-D0-C0-38" class="content-link">poster</a> at the 243rd American Astronomical Society meeting on my analysis of atmospheric physics ultra hot Jupiter KELT-20b. For a more detailed summary, please see the <a href="https://ui.adsabs.harvard.edu/abs/2024AAS...24317909L/abstract" class="content-link">abstract</a>. I defended my <a href="https://kb.osu.edu/handle/1811/105450" class="content-link">undergraduate thesis</a> on this topic in December 2024 and submitted a manuscript to the Astronomical Journal in March 2025. This work was completed in collaboration with <a href="https://www.astronomy.ohio-state.edu/johnson.7240/" class="content-link">Dr. Marshall Johnson</a>, <a href="https://www.jiwang.io/#/" class="content-link">Prof. Ji Wang</a>, et al.</p>
+                <p>KELT-20b is a well-studied ($T_{\text{eq}}=2262$ K) ultra hot Jupiter, but its multidimensional atmospheric structure remains unconstrained. We performed high-resolution cross-correlation transmission spectroscopy (HRCCTS) on a single transit time series of KELT-20b, observed with PEPSI on the LBT. Upon combining nineteen in-transit exposures, we detect Fe I $(11.9\sigma)$ and Fe II $(23.7\sigma)$ and tentatively detect Na I $(3.4\sigma)$ and Cr I $(3.3\sigma)$. The full-transit velocity offsets of the strongest absorbers are $\Delta V_{\text{Fe I}} = -1.0 \pm 0.7$ km s$^{-1}$ and $\Delta V_{\text{Fe II}}= 0.0\pm 0.5$ km s$^{-1}$, which are mostly inconsistent with previously published values for KELT-20b, although the previous measurements are mostly inconsistent with each other. By correcting for discrepant systemic velocity solutions of up to $1.7$ km s$^{-1}$ between studies, our Fe II offset becomes consistent with previous measurements ($\leq 1.7\sigma$), while Fe I remains significantly less blueshifted than in earlier studies ($\geq 2.2-4.5\sigma$). We propose a set of detection criteria to improve future reproducibility in HRCCTS work. Phase-resolving the Fe I and Fe II absorption signatures into eight orbital phase bins reveals distinct dynamical regimes: Fe II exhibits a strong phase-dependent blueshift from ingress to egress along with significant limb asymmetry, while Fe I shows weaker signals and a more modest blueshift with phase. These patterns indicate day-to-night winds and suggest scale height differences are a significant driver of limb asymmetry in KELT-20b.</p>
+                <div class="img-container">
+                    <img src="research-figures/spectraIndArms.Fe I.KELT-20b.inverted-transmission-better-1.png" loading="lazy" decoding="async">
+                    <img src="research-figures/spectraIndArms.Fe II.KELT-20b.inverted-transmission-better-1.png" loading="lazy" decoding="async">
+                </div>
+                <div class="img-container">
+                    <img src="research-figures/KELT-20b.20190504.combined.Fe.CCFs-shifted-1.png" loading="lazy" decoding="async">
+                    <img src="research-figures/KELT-20b.20190504.combined.Fe+.CCFs-shifted-1.png" loading="lazy" decoding="async">
+                </div>
+                <div class="img-container">
+                    <img src="research-figures/KELT-20b.20190504.combined.Fe..halves.SNR-Gaussian-Asymmetry-1.png" loading="lazy" decoding="async">
+                    <img src="research-figures/KELT-20b.20190504.combined.Fe+..halves.SNR-Gaussian-Asymmetry (1)-1.png" loading="lazy" decoding="async">
+                </div>
+                <div class="img-container">
+                    <img src="research-figures/no-fit-KELT-20b.Fe.combined.phase-binned+RVs-1.png" loading="lazy" decoding="async">
+                    <img src="research-figures/KELT-20b.Fe+.combined.phase-binned+RVs-1.png" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+            <div class="content-display" data-content="f02">
+                <h3>Hydrothermal synthesis and testing of metal oxide nanostructures</h3>
+                <p>During my research assistantship at the NSF Center for Industrial Sensors and Measurements with <a href="https://mse.osu.edu/people/akbar.1" class="content-link">Prof. Sheikh Akbar</a> in the Ohio State Department of Materials Science and Engineering, I focused on manufacturing nanoscale metal-oxide gas sensors (MOGS) aimed at detecting hazardous gases at trace concentrations. My responsibilities included synthesizing nanostructures of various compositions, depositing them on substrates with diodes, and testing their sensitivity using electrical measurements. For reactive sensors, I documented their morphology and composition with scanning electron microscopy and X-ray diffraction, archiving the results in the <a href="https://www.odorsdatabase.com/" class="content-link">Open Database of Resistive-type Sensors</a> (ODORS). I also compiled sensor data from current literature into ODORS, with the aim of developing a platform to identify trends in the selectivity and sensitivity of MOGS.</p>
+            </div>
+
+            <div class="content-display" data-content="f03">
+                <h3>Linking Writing Processes to Writing Quality with Histogram-based Gradient Boosting Regression Tree</h3>
+                <p>I participated in the Linking Writing Processes to Writing Quality Kaggle competition, concluding in January 2024. I engineered dozens of features from provided keystroke log data based on recent computational linguistics and psychology literature, applied scikit-learn models, analyzed feature importance and model performance, and placed in the 63.3% on the <a href="https://www.kaggle.com/code/ryanholbrook/writing-processes-efficiency-lb" class="content-link">Efficiency Leaderboard</a>.</p>
+                <img src="research-figures/physics5680-researchposter.png" alt="Research poster" loading="lazy" decoding="async">
+                <p><em>This poster summarizes my solution.</em></p>
+            </div>
         </div>
     </div>
     <!-- Structured Data -->
@@ -269,10 +340,66 @@
     </script>
 
     <script>
+        // Show content in right column when pane is clicked
+        document.querySelectorAll('.pane').forEach(pane => {
+            pane.addEventListener('click', function(e) {
+                // Don't do anything if clicking on a link
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    return;
+                }
+                
+                // Remove active class from all panes
+                document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+                
+                // Add active class to clicked pane
+                this.classList.add('active');
+                
+                // Hide all content displays
+                document.querySelectorAll('.content-display').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show corresponding content
+                const frameId = this.getAttribute('data-frame');
+                const contentDisplay = document.querySelector(`.content-display[data-content="${frameId}"]`);
+                if (contentDisplay) {
+                    contentDisplay.classList.add('active');
+                }
+            });
+        });
+
+        // Disable right-click on images
         document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG' || e.target.closest('.pane')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
             if (e.target.tagName === 'IMG') {
                 e.preventDefault();
+                return false;
             }
+        });
+
+        // Disable common keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'a' || e.key === 'p' || e.key === 'u' || e.key === 'i')) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable text selection on images
+        document.querySelectorAll('.pane img').forEach(img => {
+            img.onselectstart = function() { return false; };
+            img.onmousedown = function() { return false; };
         });
     </script>
 </body>

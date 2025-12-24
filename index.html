@@ -56,29 +56,69 @@
 
         .panel {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            gap: 15px;
+            gap: 0;
+            position: relative;
+        }
+
+        .panel.research-panel {
+            flex-direction: row-reverse;
         }
 
         .nav-links {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 8px;
+            position: absolute;
+            z-index: 5;
+            min-width: 180px;
+        }
+
+        .research-panel .nav-links {
+            right: calc(100% + 60px);
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .panel:not(.research-panel) .nav-links {
+            left: calc(100% + 60px);
+            align-items: flex-start;
+            text-align: left;
         }
 
         .nav-links a {
-            color: #ffd700;
+            color: #fff;
             text-decoration: none;
-            font-size: 1em;
+            font-size: 1.3em;
             letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.2s;
+            text-transform: lowercase;
+            transition: color 0.2s, text-shadow 0.2s;
+            white-space: nowrap;
+        }
+
+        .panel:not(.research-panel) .panel-image:hover ~ .nav-links a {
+            color: #ffd700;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
         }
 
         .nav-links a:hover {
+            color: #ffd700;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+
+        .research-links a {
             color: #fff;
+        }
+
+        .research-panel .panel-image:hover ~ .research-links a {
+            color: #87CEEB;
+            text-shadow: 0 0 8px rgba(135, 206, 235, 0.6);
+        }
+
+        .research-links a:hover {
+            color: #87CEEB;
+            text-shadow: 0 0 8px rgba(135, 206, 235, 0.6);
         }
 
         .panel-image {
@@ -133,13 +173,14 @@
         }
 
         .side-links a {
-            color: #aaa;
+            color: #fff;
             text-decoration: none;
             letter-spacing: 1px;
+            transition: color 0.3s ease;
         }
 
         .side-links a:hover {
-            color: #ffd700;
+            color: #ff1a1a;
         }
 
         .side-links hr {
@@ -172,6 +213,10 @@
             text-decoration: underline;
         }
 
+        .description-section .description:first-child a {
+            color: #87CEEB;
+        }
+
         footer {
             position: fixed;
             bottom: 20px;
@@ -200,6 +245,32 @@
             .main-section {
                 flex-direction: column;
                 gap: 40px;
+            }
+
+            .panel {
+                flex-direction: column;
+            }
+
+            .panel.research-panel {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                position: static;
+                align-items: center;
+                text-align: center;
+            }
+
+            .research-panel .nav-links {
+                left: auto;
+                align-items: center;
+                text-align: center;
+            }
+
+            .panel:not(.research-panel) .nav-links {
+                right: auto;
+                align-items: center;
+                text-align: center;
             }
 
             .panel-image {
@@ -236,7 +307,9 @@
     <div class="side-links">
         <a href="https://github.com/calderlen">github.com/calderlen</a>
         <a href="https://www.instagram.com/calderlen">instagram.com/calderlen</a>
+        <a href="https://www.linkedin.com/in/calderlen/">linkedin.com/in/calderlen</a>
         <a href="mailto:lenhart.106@osu.edu">lenhart.106[at]osu.edu</a>
+        <a href="mailto:calderlen@gmail.com">calderlen[at]gmail.com</a>
     </div>
 
     <div class="container">
@@ -244,32 +317,26 @@
 
         <div class="main-section">
             <!-- Left Panel: research -->
-            <div class="panel">
-                <nav class="nav-links">
-                    <a href="cv.html">cv</a>
-                </nav>
-
+            <div class="panel research-panel">
                 <a href="research.html" class="panel-image research">
                     <img src="research-figures/kelt-20b.png" alt="" loading="lazy" decoding="async">
                 </a>
-
-                <nav class="nav-links">
+                <nav class="nav-links research-links">
+                    <a href="cv.html">cv</a>
                     <a href="research.html">research</a>
                 </nav>
             </div>
 
             <!-- Right Panel: art -->
             <div class="panel">
-                <nav class="nav-links">
-                    <a href="cv-art.html">art cv</a>
-                </nav>
-
                 <a href="creative.html" class="panel-image">
                     <img src="photographs/fs-guerrilla/home-cat.jpg" alt="" loading="lazy" decoding="async">
                 </a>
-
                 <nav class="nav-links">
-                    <a href="creative.html">art</a>
+                    <a href="cv-art.html">art cv</a>
+                    <a href="creative.html">online gallery</a>
+                    <a href="#">physical exhibitions</a>
+                    <a href="#">shop</a>
                 </nav>
             </div>
         </div>

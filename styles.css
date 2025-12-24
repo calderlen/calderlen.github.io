@@ -30,6 +30,10 @@
     color: #ffd700;
 }
 
+.research-page .navbar a:hover, .research-page .navbar-dark a:hover {
+    color: #87CEEB;
+}
+
 .home-circle {
     position: fixed;
     top: -32px;

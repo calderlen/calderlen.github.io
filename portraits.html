@@ -57,6 +57,28 @@
             width: auto;
             height: auto;
             object-fit: contain;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+        }
+        .photo {
+            position: relative;
+        }
+        .photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -103,10 +125,39 @@
     </script>
 
     <script>
+        // Disable right-click on images
         document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG' || e.target.closest('.photo')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
             if (e.target.tagName === 'IMG') {
                 e.preventDefault();
+                return false;
             }
+        });
+
+        // Disable common keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Disable Ctrl+S, Ctrl+A, Ctrl+P, F12
+            if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'a' || e.key === 'p' || e.key === 'u' || e.key === 'i')) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable text selection on images
+        document.querySelectorAll('.photo img').forEach(img => {
+            img.onselectstart = function() { return false; };
+            img.onmousedown = function() { return false; };
         });
     </script>
 </body>
