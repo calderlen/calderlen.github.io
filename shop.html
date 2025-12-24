@@ -1,0 +1,335 @@
+<!--
+SETUP INSTRUCTIONS FOR STRIPE PAYMENT LINKS:
+
+1. Create a Stripe account at https://stripe.com
+2. Go to Products > Payment Links in your Stripe dashboard
+3. Create a payment link for each product:
+   - Set the price
+   - Add product name and description
+   - Configure shipping (if needed)
+   - Copy the payment link URL (format: https://buy.stripe.com/xxxxx)
+
+4. Replace "YOUR_PAYMENT_LINK_ID" in each product card with your actual Stripe Payment Link URL
+5. Update product images, titles, details, and prices
+6. Remove or modify the example products as needed
+
+ALTERNATIVE: If you want more control, you can use Stripe Checkout Sessions with a serverless function
+(requires a backend service like Vercel, Netlify Functions, or AWS Lambda)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://calderlen.github.io/shop.html">
+    <meta property="og:title" content="Calder Lenhart | Shop">
+    <meta property="og:description" content="Purchase fine art photography prints by Calder Lenhart.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calderlen.github.io/shop.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Calder Lenhart | Shop</title>
+    <meta name="description" content="Purchase fine art photography prints by Calder Lenhart.">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #ddd;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 160px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        .shop-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .shop-header h1 {
+            font-size: 2.5em;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .shop-header p {
+            color: #aaa;
+            font-size: 1em;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+            align-items: stretch;
+        }
+
+        .product-card {
+            border: 1px solid #333;
+            background-color: #050505;
+            padding: 0;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: #ffd700;
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .product-card:hover .product-image {
+            filter: grayscale(0%);
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #fff;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .product-details {
+            font-size: 0.85em;
+            color: #888;
+            margin: 0 0 12px 0;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.3em;
+            font-weight: 500;
+            color: #ffd700;
+            margin: 12px 0;
+        }
+
+        .buy-button {
+            background-color: transparent;
+            border: 1px solid #ffd700;
+            color: #ffd700;
+            padding: 12px 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+
+        .buy-button:hover {
+            background-color: #ffd700;
+            color: #000;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+        }
+
+        .buy-button:active {
+            transform: scale(0.98);
+        }
+
+        .sold-out {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .sold-out .buy-button {
+            border-color: #666;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .sold-out .buy-button:hover {
+            background-color: transparent;
+            color: #666;
+            box-shadow: none;
+        }
+
+        .product-card {
+            position: relative;
+        }
+
+        .sold-out-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 6px 12px;
+            font-size: 0.75em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                margin-top: 120px;
+                padding: 0 16px;
+            }
+
+            .shop-header h1 {
+                font-size: 2em;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 24px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .shop-header h1 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-circle">Home</a>
+    
+    <div class="container">
+        <div class="shop-header">
+            <h1>Shop</h1>
+            <p>Fine art photography prints. Each piece is carefully selected and printed to archival standards.</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product 1 - Replace with your actual product -->
+            <div class="product-card">
+                <img src="photographs/fs-guerrilla/home-cat.jpg" alt="Product Title" class="product-image" loading="lazy" decoding="async">
+                <div class="product-info">
+                    <h3 class="product-title">Product Title</h3>
+                    <p class="product-details">8" × 10" archival print<br>Edition of 25</p>
+                    <div class="product-price">$150</div>
+                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
+                </div>
+            </div>
+
+            <!-- Product 2 - Replace with your actual product -->
+            <div class="product-card">
+                <img src="photographs/fs-neighborhood-watch/house-up-hill-conneaut.jpg" alt="Product Title" class="product-image" loading="lazy" decoding="async">
+                <div class="product-info">
+                    <h3 class="product-title">Product Title</h3>
+                    <p class="product-details">11" × 14" archival print<br>Edition of 25</p>
+                    <div class="product-price">$200</div>
+                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
+                </div>
+            </div>
+
+            <!-- Product 3 - Example with sold out -->
+            <div class="product-card sold-out">
+                <div class="sold-out-badge">Sold Out</div>
+                <img src="photographs/fs-surveil/billboard-evening.jpg" alt="Product Title" class="product-image" loading="lazy" decoding="async">
+                <div class="product-info">
+                    <h3 class="product-title">Product Title</h3>
+                    <p class="product-details">16" × 20" archival print<br>Edition of 10</p>
+                    <div class="product-price">$350</div>
+                    <a href="#" class="buy-button">Sold Out</a>
+                </div>
+            </div>
+
+            <!-- Add more products by copying the product-card structure above -->
+        </div>
+    </div>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Calder Lenhart",
+      "url": "https://calderlen.github.io",
+      "sameAs": [
+        "https://www.instagram.com/calderlen",
+        "https://github.com/calderlen"
+      ],
+      "jobTitle": "Astrophysics Researcher & Photographer",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "The Ohio State University" },
+      "knowsAbout": ["Physics", "Astrophysics", "Photography"]
+    }
+    </script>
+
+    <script>
+        // Disable right-click on images
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable common keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'a' || e.key === 'p' || e.key === 'u' || e.key === 'i')) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable text selection on images
+        document.querySelectorAll('.product-image').forEach(img => {
+            img.onselectstart = function() { return false; };
+            img.onmousedown = function() { return false; };
+        });
+    </script>
+</body>
+</html>
+
