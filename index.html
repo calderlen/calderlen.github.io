@@ -217,26 +217,32 @@
             color: #87CEEB;
         }
 
+        .panel-description {
+            display: none;
+        }
+
         footer {
             position: fixed;
-            bottom: 20px;
-            left: 30px;
+            bottom: 8px;
+            right: 15px;
             margin: 0;
-            padding: 0;
+            padding: 0 10px;
             font-size: 0.65em;
             color: #666;
+            text-align: left;
+            width: 320px;
         }
 
         .clock {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 25px;
+            right: 15px;
             font-size: 0.85em;
             color: #aaa;
             letter-spacing: 1px;
             width: 320px;
             padding: 6px 10px;
-            text-align: right;
+            text-align: left;
             font-variant-numeric: tabular-nums;
         }
 
@@ -259,6 +265,25 @@
                 position: static;
                 align-items: center;
                 text-align: center;
+                gap: 12px;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .nav-links a {
+                padding: 12px 20px;
+                border: 1px solid #444;
+                border-radius: 8px;
+                background-color: rgba(255, 255, 255, 0.05);
+                display: block;
+                width: 100%;
+                text-align: center;
+                transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+            }
+
+            .nav-links a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                border-color: #666;
             }
 
             .research-panel .nav-links {
@@ -274,7 +299,8 @@
             }
 
             .panel-image {
-                width: 300px;
+                width: 400px;
+                height: 600px;
             }
 
             .site-title {
@@ -283,9 +309,29 @@
 
             .side-links {
                 position: static;
-                flex-direction: row;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 40px;
                 margin-bottom: 20px;
+                gap: 12px;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .side-links a {
+                padding: 12px 20px;
+                border: 1px solid #444;
+                border-radius: 8px;
+                background-color: rgba(255, 255, 255, 0.05);
+                display: block;
+                width: 100%;
+                text-align: center;
+                transition: background-color 0.2s, border-color 0.2s;
+            }
+
+            .side-links a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                border-color: #666;
             }
 
             .side-links hr {
@@ -293,25 +339,36 @@
             }
 
             .description-section {
-                flex-direction: column;
-                gap: 20px;
+                display: none;
             }
 
-            .description {
-                width: 300px;
+            .panel-description {
+                display: block;
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                font-size: 0.9em;
+                line-height: 1.8;
+                color: #ccc;
+                margin-top: 20px;
+            }
+
+            .panel-description a {
+                color: #ffd700;
+                text-decoration: none;
+            }
+
+            .panel-description a:hover {
+                text-decoration: underline;
+            }
+
+            .research-panel .panel-description a {
+                color: #87CEEB;
             }
         }
     </style>
 </head>
 <body>
-    <div class="side-links">
-        <a href="https://github.com/calderlen">github.com/calderlen</a>
-        <a href="https://www.instagram.com/calderlen">instagram.com/calderlen</a>
-        <a href="https://www.linkedin.com/in/calderlen/">linkedin.com/in/calderlen</a>
-        <a href="mailto:lenhart.106@osu.edu">lenhart.106[at]osu.edu</a>
-        <a href="mailto:calderlen@gmail.com">calderlen[at]gmail.com</a>
-    </div>
-
     <div class="container">
         <h1 class="site-title">Calder Lenhart</h1>
 
@@ -325,6 +382,9 @@
                     <a href="cv.html">cv</a>
                     <a href="research.html">research</a>
                 </nav>
+                <p class="description panel-description">
+                    I'm a post-baccalaureate researcher and ASAS-SN Data Analyst at the Ohio State University Department of Astronomy
+                </p>
             </div>
 
             <!-- Right Panel: art -->
@@ -338,6 +398,9 @@
                     <a href="#">physical exhibitions</a>
                     <a href="#">shop</a>
                 </nav>
+                <p class="description panel-description">
+                    I'm a photographer based in Columbus, Ohio
+                </p>
             </div>
         </div>
 
@@ -353,6 +416,14 @@
         <footer>
             © 2024-2026 Calder Lenhart. All rights reserved.
         </footer>
+
+        <div class="side-links">
+            <a href="https://github.com/calderlen">github.com/calderlen</a>
+            <a href="https://www.instagram.com/calderlen">instagram.com/calderlen</a>
+            <a href="https://www.linkedin.com/in/calderlen/">linkedin.com/in/calderlen</a>
+            <a href="mailto:lenhart.106@osu.edu">lenhart.106[at]osu.edu</a>
+            <a href="mailto:calderlen@gmail.com">calderlen[at]gmail.com</a>
+        </div>
     </div>
 
     <div class="clock" id="clock"></div>
