@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="image-protection.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -78,6 +79,22 @@
             bottom: 0;
             z-index: 10;
             pointer-events: none;
+        }
+        .photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            background: transparent;
+            pointer-events: auto;
+            cursor: default;
+        }
+        .home-circle {
+            z-index: 10000 !important;
+            pointer-events: auto !important;
         }
     </style>
 </head>
