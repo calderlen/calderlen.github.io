@@ -1,21 +1,3 @@
-<!--
-SETUP INSTRUCTIONS FOR STRIPE PAYMENT LINKS:
-
-1. Create a Stripe account at https://stripe.com
-2. Go to Products > Payment Links in your Stripe dashboard
-3. Create a payment link for each product:
-   - Set the price
-   - Add product name and description
-   - Configure shipping (if needed)
-   - Copy the payment link URL (format: https://buy.stripe.com/xxxxx)
-
-4. Replace "YOUR_PAYMENT_LINK_ID" in each product card with your actual Stripe Payment Link URL
-5. Update product images, titles, details, and prices
-6. Remove or modify the example products as needed
-
-ALTERNATIVE: If you want more control, you can use Stripe Checkout Sessions with a serverless function
-(requires a backend service like Vercel, Netlify Functions, or AWS Lambda)
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -284,207 +266,9 @@ ALTERNATIVE: If you want more control, you can use Stripe Checkout Sessions with
             </select>
         </div>
         <div class="products-grid" id="products-grid">
-            <!-- Condolences - $350 -->
-            <div class="product-card" data-price="350" data-name="Condolences" data-date="2025">
-                <img src="photographs/fs-neighborhood-watch/house-up-hill-conneaut.jpg" alt="Condolences" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Condolences</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>24" × 16"<br>Youngstown, OH – 2025</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- What happened - $350 -->
-            <div class="product-card" data-price="350" data-name="What happened" data-date="2025">
-                <img src="photographs/fs-guerrilla/home-cat.jpg" alt="What happened" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">What happened</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>24" × 16"<br>Columbus, OH – 2025</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Full - $350 -->
-            <div class="product-card" data-price="350" data-name="Full" data-date="2024">
-                <img src="photographs/fs-guerrilla/graffiti-faces-dark.jpg" alt="Full" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Full</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>24" × 16"<br>Columbus, OH – 2024</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- House Up Hill - $400 -->
-            <div class="product-card" data-price="400" data-name="House Up Hill" data-date="3">
-                <img src="photographs/fs-neighborhood-watch/house-up-hill-conneaut.jpg" alt="House Up Hill" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">House Up Hill</h3>
-                    <p class="product-details">18½" × 12⅓" archival print</p>
-                    <div class="product-price">$400</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- After the Fire - $350 -->
-            <div class="product-card" data-price="350" data-name="After the Fire" data-date="2023">
-                <img src="photographs/fs-neighborhood-watch/house-fire-columbus.jpg" alt="After the Fire" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">After the Fire</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>24" × 16"<br>Columbus, OH – 2023</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Adventitious - $350 -->
-            <div class="product-card" data-price="350" data-name="Adventitious" data-date="2021">
-                <img src="photographs/fs-neighborhood-watch/ivy-house-madera.jpg" alt="Adventitious" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Adventitious</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>24" × 36"<br>Youngstown, OH – 2021</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Duck in Creek - $350 -->
-            <div class="product-card" data-price="350" data-name="Duck in Creek" data-date="6">
-                <img src="photographs/fs-studies-of-water/duck-in-creek-polandwoods.jpg" alt="Duck in Creek" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Duck in Creek</h3>
-                    <p class="product-details">18½" × 12⅓" archival print</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Frozen Pond - $350 -->
-            <div class="product-card" data-price="350" data-name="Frozen Pond" data-date="7">
-                <img src="photographs/fs-studies-of-water/frozen-pond-canfield.jpg" alt="Frozen Pond" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Frozen Pond</h3>
-                    <p class="product-details">19" × 12⅔" archival print</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Bull - $350 -->
-            <div class="product-card" data-price="350" data-name="Bull" data-date="8">
-                <img src="photographs/fs-neighborhood-watch/brick-vine-house.jpg" alt="Bull" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Bull</h3>
-                    <p class="product-details">18½" × 12⅓" archival print</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Pylons - $350 -->
-            <div class="product-card" data-price="350" data-name="Pylons" data-date="9">
-                <img src="photographs/fs-neighborhood-watch/transmission-towers.jpg" alt="Pylons" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Pylons</h3>
-                    <p class="product-details">18½" × 12⅓" archival print</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- August - $350 -->
-            <div class="product-card" data-price="350" data-name="August" data-date="10">
-                <img src="photographs/fs-neighborhood-watch/20230816-DSC00864.jpg" alt="August" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">August</h3>
-                    <p class="product-details">18" × 12" archival print</p>
-                    <div class="product-price">$350</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Delicatessen - $250 -->
-            <div class="product-card" data-price="250" data-name="Delicatessen" data-date="2025">
-                <img src="photographs/fs-neighborhood-watch/blue-shutters.jpg" alt="Delicatessen" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Delicatessen</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>16" × 12"<br>Pittsburgh, PA – 2025</p>
-                    <div class="product-price">$250</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Encounter - $250 -->
-            <div class="product-card" data-price="250" data-name="Encounter" data-date="2024">
-                <img src="photographs/fs-neighborhood-watch/gated-door.jpg" alt="Encounter" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Encounter</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>16" × 12"<br>Youngstown, OH – 2024</p>
-                    <div class="product-price">$250</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Water Tower - $600 -->
-            <div class="product-card" data-price="600" data-name="Water Tower" data-date="13">
-                <img src="photographs/fs-neighborhood-watch/Telephone Poles Sunset.jpg" alt="Water Tower" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Water Tower</h3>
-                    <p class="product-details">36" × 24" archival print</p>
-                    <div class="product-price">$600</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Yarvin - $500 -->
-            <div class="product-card" data-price="500" data-name="Yarvin" data-date="2025">
-                <img src="photographs/fs-neighborhood-watch/white-house-columbus.jpg" alt="Yarvin" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Yarvin</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>36" × 24"<br>Ottawa, ON, Canada – 2025</p>
-                    <div class="product-price">$500</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Christmas in July - $400 -->
-            <div class="product-card" data-price="400" data-name="Christmas in July" data-date="2025">
-                <img src="photographs/fs-neighborhood-watch/red-tent.jpg" alt="Christmas in July" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Christmas in July</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>24" × 20"<br>Steubenville, OH – 2025</p>
-                    <div class="product-price">$400</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- untitled - $600 -->
-            <div class="product-card" data-price="600" data-name="untitled" data-date="16">
-                <img src="photographs/fs-neighborhood-watch/overgrown-car.jpg" alt="untitled" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">untitled</h3>
-                    <p class="product-details">24" × 20" archival print</p>
-                    <div class="product-price">$600</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
-
-            <!-- Home - $750 -->
-            <div class="product-card" data-price="750" data-name="Home" data-date="2024">
-                <img src="photographs/fs-guerrilla/home-cat.jpg" alt="Home" class="product-image" loading="lazy" decoding="async">
-                <div class="product-info">
-                    <h3 class="product-title">Home</h3>
-                    <p class="product-details">Archival pigment print on cotton rag fine art paper, mounted on artist-made wood panel<br>32" × 48"<br>Columbus, OH – 2024</p>
-                    <div class="product-price">$750</div>
-                    <a href="https://buy.stripe.com/YOUR_PAYMENT_LINK_ID" class="buy-button" target="_blank">Purchase</a>
-                </div>
-            </div>
         </div>
     </div>
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -502,7 +286,6 @@ ALTERNATIVE: If you want more control, you can use Stripe Checkout Sessions with
     </script>
 
     <script>
-        // Disable right-click on images
         document.addEventListener('contextmenu', function(e) {
             if (e.target.tagName === 'IMG') {
                 e.preventDefault();
@@ -510,7 +293,6 @@ ALTERNATIVE: If you want more control, you can use Stripe Checkout Sessions with
             }
         });
 
-        // Disable drag and drop
         document.addEventListener('dragstart', function(e) {
             if (e.target.tagName === 'IMG') {
                 e.preventDefault();
@@ -518,7 +300,6 @@ ALTERNATIVE: If you want more control, you can use Stripe Checkout Sessions with
             }
         });
 
-        // Disable common keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'a' || e.key === 'p' || e.key === 'u' || e.key === 'i')) {
                 e.preventDefault();
@@ -530,13 +311,11 @@ ALTERNATIVE: If you want more control, you can use Stripe Checkout Sessions with
             }
         });
 
-        // Disable text selection on images
         document.querySelectorAll('.product-image').forEach(img => {
             img.onselectstart = function() { return false; };
             img.onmousedown = function() { return false; };
         });
 
-        // Sorting functionality
         const sortSelect = document.getElementById('sort-select');
         const productsGrid = document.getElementById('products-grid');
 
@@ -561,7 +340,6 @@ ALTERNATIVE: If you want more control, you can use Stripe Checkout Sessions with
                 }
             });
 
-            // Clear grid and re-append sorted items
             productsGrid.innerHTML = '';
             sorted.forEach(card => productsGrid.appendChild(card));
         }

@@ -188,7 +188,7 @@
         photoSections.forEach(section => observer.observe(section));
     </script>
 
-    <!-- Structured Data -->
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -206,7 +206,7 @@
     </script>
 
     <script>
-        // Disable right-click on images
+        
         document.addEventListener('contextmenu', function(e) {
             if (e.target.tagName === 'IMG' || e.target.closest('.photo')) {
                 e.preventDefault();
@@ -214,7 +214,7 @@
             }
         });
 
-        // Disable drag and drop
+        
         document.addEventListener('dragstart', function(e) {
             if (e.target.tagName === 'IMG') {
                 e.preventDefault();
@@ -222,9 +222,9 @@
             }
         });
 
-        // Disable common keyboard shortcuts
+        
         document.addEventListener('keydown', function(e) {
-            // Disable Ctrl+S, Ctrl+A, Ctrl+P, F12
+            
             if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'a' || e.key === 'p' || e.key === 'u' || e.key === 'i')) {
                 e.preventDefault();
                 return false;
@@ -235,7 +235,7 @@
             }
         });
 
-        // Disable text selection on images
+        
         document.querySelectorAll('.photo img').forEach(img => {
             img.onselectstart = function() { return false; };
             img.onmousedown = function() { return false; };

@@ -50,10 +50,10 @@
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 2.5rem;
-    text-indent: -30px; /* move text further left */
-    padding-top: 18px;  /* keep vertical position */
+    text-indent: -30px;
+    padding-top: 18px;
     text-decoration: none;
-    z-index: 100; /* always above gallery content */
+    z-index: 100;
 }
 
 .home-circle:hover {

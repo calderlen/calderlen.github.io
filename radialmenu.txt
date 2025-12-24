@@ -249,7 +249,6 @@
 
     </div>
     <div class="main">
-        <!-- Updated button links for full width -->
         <a href="gallery.html" class="button-link" id="left">
             <button class="button">Creative Work</button>
         </a>

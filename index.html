@@ -446,7 +446,6 @@
         <h1 class="site-title">Calder Lenhart</h1>
 
         <div class="main-section">
-            <!-- Left Panel: research -->
             <div class="panel research-panel">
                 <a href="research.html" class="panel-image research">
                     <img src="research-figures/kelt-20b.png" alt="" loading="lazy" decoding="async">
@@ -462,7 +461,6 @@
                 </p>
             </div>
 
-            <!-- Right Panel: art -->
             <div class="panel">
                 <a href="gallery.html" class="panel-image">
                     <img src="photographs/fs-guerrilla/home-cat.jpg" alt="" loading="lazy" decoding="async">
@@ -542,7 +540,6 @@
         updateClock();
         setInterval(updateClock, 1000);
 
-        // Scroll indicator opacity control
         let scrollTimeout;
         let lastScrollTop = 0;
         const scrollIndicatorDown = document.querySelector('.scroll-indicator-down');
@@ -553,9 +550,8 @@
             const windowHeight = window.innerHeight;
             const documentHeight = document.documentElement.scrollHeight;
             const isAtTop = currentScrollTop <= 0;
-            const isAtBottom = currentScrollTop + windowHeight >= documentHeight - 1; // -1 for rounding
+            const isAtBottom = currentScrollTop + windowHeight >= documentHeight - 1;
             
-            // Check if at top or bottom
             if (isAtTop) {
                 scrollIndicatorUp.classList.add('at-top');
                 scrollIndicatorDown.classList.add('at-top');
@@ -576,13 +572,10 @@
                 scrollIndicatorUp.classList.remove('at-bottom');
             }
             
-            // Handle scrolling direction opacity
             if (currentScrollTop > lastScrollTop) {
-                // Scrolling downward
                 scrollIndicatorDown.classList.add('scrolling');
                 scrollIndicatorUp.classList.remove('scrolling');
             } else if (currentScrollTop < lastScrollTop) {
-                // Scrolling upward
                 scrollIndicatorUp.classList.add('scrolling');
                 scrollIndicatorDown.classList.remove('scrolling');
             }
@@ -598,12 +591,10 @@
         
         if (scrollIndicatorDown && scrollIndicatorUp) {
             window.addEventListener('scroll', updateArrowOpacity);
-            // Check on page load
             updateArrowOpacity();
         }
     </script>
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
