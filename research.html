@@ -13,12 +13,22 @@
     <title>Calder Lenhart | Research</title>
     <meta name="description" content="Research focus on ultra hot Jupiter atmospheres, cross-correlation spectroscopy, and exoplanet dynamics.">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
     <style>
         body {
-            font-family: 'Lato', serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #000;
+            color: #ccc;
         }
 
         .container {
@@ -28,8 +38,8 @@
 
         .main-section {
             padding: 35px;
-            background-color: #fff;
-            color: #333;
+            background-color: #000;
+            color: #ccc;
             margin-top: 50px;
             border-radius: 5px;
             flex-direction: column;
@@ -42,63 +52,72 @@
         }
 
         .main-section h2 {
-            font-size: 40px;
-            line-height: 1.6;
+            font-size: 32px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            margin-bottom: 10px;
         }
 
         .main-section h3 {
-            font-size: 32px;
-            line-height: 1.6;
+            font-size: 22px;
+            line-height: 1.5;
+            margin-top: 0;
+            margin-bottom: 8px;
         }
 
         .main-section p {
-            line-height: 2.0;
-            justify-content: space-between;
-            font-size: 24px;
+            line-height: 1.8;
+            font-size: 16px;
         }
 
-        /* Indentation for hierarchical list */
+        /* Project cards */
         .research-list {
             list-style-type: none;
-            margin-left: 2em; /* indent level */
-            padding-left: 0;
+            margin: 30px 0 0 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
         }
 
         .research-item {
-            display: flex;
             position: relative;
-            padding-left: 20px;
-            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 24px 24px 18px 24px;
+            margin: 0;
+            background-color: #050505;
+            border-radius: 10px;
+            border: 1px solid #111;
         }
 
         .research-item::before {
             content: attr(data-date);
             position: absolute;
-            left: -20px;
-            font-size: 2em;
+            top: 14px;
+            right: 24px;
+            font-size: 0.8em;
+            color: #777;
         }
 
         .research-item::after {
-            content: '';
-            position: absolute;
-            left: -20px;
-            width: 10%;
-            border-top: 0px solid #000;
+            content: none;
         }
 
         .research-item a {
-            color: blue;
+            color: #ffd700;
             text-decoration: underline;
         }
 
         .text-content {
-            flex: 3;
-            margin-top: 2em;
+            flex: 1 1 280px;
+            margin-top: 0;
         }
 
         .plot-content {
-            flex: 2;
-            margin-left: 20px;
+            flex: 1 1 260px;
+            margin-left: 0;
         }
 
         .plot-content img {
@@ -108,7 +127,8 @@
 
         .img-container {
             display: flex;
-            gap: 10px; /* Adjust gap as needed */
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         @media screen and (max-width: 768px) {
@@ -128,21 +148,13 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="cv.html">CV</a>
-        <a href="cv-art.html">Art CV</a>
-        <a href="https://github.com/calderlen">GitHub</a>
-        <a href="https://www.instagram.com/calderlen">Instagram</a>
-        <a href="contact.html">Contact</a>
-    </div>
-
+    <a href="index.html" class="home-circle">Home</a>
     <div class="container">
         <div class="timeline"></div>
         <div class="main-section">
             <h2>Research</h2>
             <ul class="research-list">
-                <!-- Research Section -->
+                <!-- Project: Ultra hot Jupiter KELT-20b -->
                 <li class="research-item" data-date="2023–present">
                     <div class="text-content">
                         <h3>Characterizing exoplanet atmospheres</h3>
@@ -170,29 +182,31 @@
                             <a href="https://www.astronomy.ohio-state.edu/johnson.7240/">Dr. Marshall Johnson</a>, 
                             <a href="https://www.jiwang.io/#/">Prof. Ji Wang</a>, et al.
                         </p>
-                        <p>KELT-20b is a well-studied exoplanet within the highly observable ultra hot Jupiter (UHJ) regime, yet its multidimensional atmospheric structure remains largely unconstrained. Recent advances in instrumentation and increased general circulation model (GCM) complexity have enabled observers to resolve the imprints of more intricate physical mechanisms in time-resolved data. We performed high-resolution cross-correlation transmission spectroscopy (HRCCTS) on a single transit time series of KELT-20b, observed with PEPSI on the LBT. We detect Fe I (11.9σ) and Fe II (23.7σ) and tentatively detect Na I (3.4σ) and Cr I (3.3σ) upon combining nineteen in-transit exposures. The full-transit velocity offsets of the strongest absorbers are ΔV_Fe I = −1.0 ± 0.7 km/s and ΔV_Fe II = 0.0 ± 0.5 km/s. These results are discrepant with other HRCCTS studies of KELT-20b, but these studies are largely inconsistent with each other due to multiple possible factors, including self-inconsistent treatment of systemic velocity. In response, we establish a stringent set of detection criteria to promote reproducibility in future works. We present phase-resolved absorption traces of species with high detection significance. Fe I and Fe II's absorption traces are both redshifted at ingress, cross to a blueshift after mid-transit, then settle at a net blueshift at egress; concurrently, SNR increases with phase. This behavior is consistent with absorption traces post-processed from an active magnetic drag GCM for another UHJ. However, the net blueshift during transit could also result from limb asymmetry drivers and/or longitudinally variable wind structure. This ambiguity motivates future theoretical work on KELT-20b.</p>
+                        <p>KELT-20b is a well-studied ($T_{\text{eq}}=2262$ K) ultra hot Jupiter, but its multidimensional atmospheric structure remains unconstrained. We performed high-resolution cross-correlation transmission spectroscopy (HRCCTS) on a single transit time series of KELT-20b, observed with PEPSI on the LBT. Upon combining nineteen in-transit exposures, we detect Fe I $(11.9\sigma)$ and Fe II $(23.7\sigma)$ and tentatively detect Na I $(3.4\sigma)$ and Cr I $(3.3\sigma)$. The full-transit velocity offsets of the strongest absorbers are $\Delta V_{\text{Fe I}} = -1.0 \pm 0.7$ km s$^{-1}$ and $\Delta V_{\text{Fe II}}= 0.0\pm 0.5$ km s$^{-1}$, which are mostly inconsistent with previously published values for KELT-20b, although the previous measurements are mostly inconsistent with each other. By correcting for discrepant systemic velocity solutions of up to $1.7$ km s$^{-1}$ between studies, our Fe II offset becomes consistent with previous measurements ($\leq 1.7\sigma$), while Fe I remains significantly less blueshifted than in earlier studies ($\geq 2.2-4.5\sigma$). We propose a set of detection criteria to improve future reproducibility in HRCCTS work. Phase-resolving the Fe I and Fe II absorption signatures into eight orbital phase bins reveals distinct dynamical regimes: Fe II exhibits a strong phase-dependent blueshift from ingress to egress along with significant limb asymmetry, while Fe I shows weaker signals and a more modest blueshift with phase. These patterns indicate day-to-night winds and suggest scale height differences are a significant driver of limb asymmetry in KELT-20b.</p>
             
                     </div>
                     
                     <div class="plot-content">
                         <div class="img-container">
-                            <img src="research-figures/spectraIndArms.Fe I.KELT-20b.inverted-transmission-better-1.png" style="width: 50%; height: auto;">
-                            <img src="research-figures/spectraIndArms.Fe II.KELT-20b.inverted-transmission-better-1.png" style="width: 50%; height: auto;">
+                            <img src="research-figures/spectraIndArms.Fe I.KELT-20b.inverted-transmission-better-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
+                            <img src="research-figures/spectraIndArms.Fe II.KELT-20b.inverted-transmission-better-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
                         </div>
                         <div class="img-container">
-                            <img src="research-figures/KELT-20b.20190504.combined.Fe.CCFs-shifted-1.png" style="width: 50%; height: auto;">
-                            <img src="research-figures/KELT-20b.20190504.combined.Fe+.CCFs-shifted-1.png" style="width: 50%; height: auto;">
+                            <img src="research-figures/KELT-20b.20190504.combined.Fe.CCFs-shifted-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
+                            <img src="research-figures/KELT-20b.20190504.combined.Fe+.CCFs-shifted-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
                         </div>
                         <div class="img-container">
-                            <img src="research-figures/KELT-20b.20190504.combined.Fe..halves.SNR-Gaussian-Asymmetry-1.png" style="width: 50%; height: auto;">
-                            <img src="research-figures/KELT-20b.20190504.combined.Fe+..halves.SNR-Gaussian-Asymmetry (1)-1.png" style="width: 50%; height: auto;">
+                            <img src="research-figures/KELT-20b.20190504.combined.Fe..halves.SNR-Gaussian-Asymmetry-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
+                            <img src="research-figures/KELT-20b.20190504.combined.Fe+..halves.SNR-Gaussian-Asymmetry (1)-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
                         </div>
                         <div class="img-container">
-                            <img src="research-figures/no-fit-KELT-20b.Fe.combined.phase-binned+RVs-1.png" style="width: 50%; height: auto;">
-                            <img src="research-figures/KELT-20b.Fe+.combined.phase-binned+RVs-1.png" style="width: 50%; height: auto;">
+                            <img src="research-figures/no-fit-KELT-20b.Fe.combined.phase-binned+RVs-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
+                            <img src="research-figures/KELT-20b.Fe+.combined.phase-binned+RVs-1.png" loading="lazy" decoding="async" style="width: 50%; height: auto;">
                         </div>
                     </div>
                 </li>
+
+                <!-- Project: Metal oxide gas sensors -->
                 <li class="research-item" data-date="2022–2023">
                     <div class="text-content">
                         <h3>Hydrothermal synthesis and testing of metal oxide nanostructures</h3>
@@ -213,11 +227,8 @@
                         </p>
                     </div>
                 </li>
-            </ul>
 
-            <h2>Projects</h2>
-            <ul class="research-list">
-                <!-- Projects Section -->
+                <!-- Project: Writing processes Kaggle competition -->
                 <li class="research-item" data-date="2023">
                     <div class="text-content">
                         <h3>Linking Writing Processes to Writing Quality with Histogram-based Gradient Boosting Regression Tree</h3>
@@ -233,7 +244,7 @@
                         </p>
                     </div>
                     <div class="plot-content">
-                        <img src="research-figures/physics5680-researchposter.png" alt="Research Figure 1" style="width: 50%; height: auto;">
+                        <img src="research-figures/physics5680-researchposter.png" alt="Research Figure 1" loading="lazy" decoding="async" style="width: 50%; height: auto;">
                         <figcaption>This poster summarizes my solution.</figcaption>
                     </div>
                 </li>
@@ -255,6 +266,14 @@
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "The Ohio State University" },
       "knowsAbout": ["Physics", "Astrophysics", "Photography"]
     }
+    </script>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>

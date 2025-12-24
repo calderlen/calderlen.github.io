@@ -13,137 +13,315 @@
     <title>Calder Lenhart</title>
     <meta name="description" content="Calder Lenhart's personal homepage. Learn about Calder Lenhart's research and photography.">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body, html {
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: monospace;
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
         }
 
-        .main {
-            height: calc(100% - 48px);
-            display: flex;
-            flex-direction: row;
-            margin-top: 48px;
-            position: relative;
-        }
-        .main::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background-color: #000;
-        }
-        .button-link {
-            flex: 1;
-            height: 100%;
+        .container {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            position: relative;
+            padding: 40px 20px;
         }
-        .button {
+
+        .site-title {
+            font-size: 2.2em;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .main-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 1em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .panel-image {
+            width: 400px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-image img {
             width: 100%;
             height: 100%;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            font-family: 'Lato', Courier, monospace;
-            font-weight: bold;
-            font-size: 30px;
-            transition: background-color 0.5s;
-            position: relative;
-        }
-        .button:hover {
-            background-color: #fbf0ff;
-        }
-        #left {
-            background-color: #f2f2f2;
-        }
-        #right {
-            background-color: #ddd;
-        }
-        #left .button:hover {
-            background: rgb(255, 200, 200);
-        }
-        #right .button:hover {
-            background: rgb(213, 213, 255);
-        }
-        .button span {
+            object-fit: cover;
             display: block;
-        }
-        .button .subtext {
-            font-size: 18px;
-            color: #818181;
-            font-style: normal;
-            width: 70%;
-            margin: auto; 
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
         }
 
-        @media screen and (max-width: 600px) {
-            .main {
+        .panel-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .panel-image.research img {
+            object-fit: cover;
+            object-position: 60% center;
+            transform: scale(1);
+        }
+
+        .panel-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 60px 40px #000;
+            pointer-events: none;
+        }
+
+        .panel-image.research::after {
+            box-shadow: inset 0 0 25px 35px rgba(0,0,0,1);
+        }
+
+        .side-links {
+            position: fixed;
+            left: 30px;
+            top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 0.85em;
+        }
+
+        .side-links a {
+            color: #aaa;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .side-links a:hover {
+            color: #ffd700;
+        }
+
+        .side-links hr {
+            width: 40px;
+            border: none;
+            border-top: 1px solid #444;
+            margin: 5px 0;
+        }
+
+        .description-section {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .description {
+            width: 400px;
+            text-align: center;
+            font-size: 0.9em;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .description a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .description a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 20px;
+            left: 30px;
+            margin: 0;
+            padding: 0;
+            font-size: 0.65em;
+            color: #666;
+        }
+
+        .clock {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-size: 0.85em;
+            color: #aaa;
+            letter-spacing: 1px;
+            width: 320px;
+            padding: 6px 10px;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 900px) {
+            .main-section {
                 flex-direction: column;
-            }
-        
-            .main::after {
-                content: none;
-            }
-        
-            .button-link {
-                flex: none;
-                width: 100%;
-                height: 50vh;
-                position: relative;
-            }
-        
-            .button-link::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                height: 1px;
-                background-color: #000;
-            }
-        
-            .button-link:last-child::after {
-                content: none;
-            }
-        
-            .button {
-                width: 100%;
-                height: 100%;
+                gap: 40px;
             }
 
+            .panel-image {
+                width: 300px;
+            }
+
+            .site-title {
+                font-size: 1.6em;
+            }
+
+            .side-links {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .side-links hr {
+                display: none;
+            }
+
+            .description-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .description {
+                width: 300px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="cv.html">CV</a>
-        <a href="cv-art.html">Art CV</a>
-        <a href="https://github.com/calderlen">GitHub</a>
-        <a href="https://www.instagram.com/calderlen">Instagram</a>
-        <a href="contact.html">Contact</a>
+    <div class="side-links">
+        <a href="https://github.com/calderlen">github.com/calderlen</a>
+        <a href="https://www.instagram.com/calderlen">instagram.com/calderlen</a>
+        <a href="mailto:lenhart.106@osu.edu">lenhart.106[at]osu.edu</a>
     </div>
-    
-    <div class="main">
-        <a href="research.html" class="button-link" id="left">
-            <button class="button"><span class="button-text">Research<span class="subtext">Calder Lenhart is a recent graduate and researcher at Ohio State University, with a B.S. in physics and astrophysics and minors in mathematics and history. He is preparing a paper on the atmospheric dynamics of ultra hot Jupiter exoplanet KELT-20b. </span></span></button>
-        </a>
-        <a href="creative.html" class="button-link" id="right">
-            <button class="button"><span class="button-text">Photography<span class="subtext">Calder Lenhart is a photographer based in Columbus, Ohio.</span></span></button>
-        </a>
+
+    <div class="container">
+        <h1 class="site-title">Calder Lenhart</h1>
+
+        <div class="main-section">
+            <!-- Left Panel: research -->
+            <div class="panel">
+                <nav class="nav-links">
+                    <a href="cv.html">cv</a>
+                </nav>
+
+                <a href="research.html" class="panel-image research">
+                    <img src="research-figures/kelt-20b.png" alt="" loading="lazy" decoding="async">
+                </a>
+
+                <nav class="nav-links">
+                    <a href="research.html">research</a>
+                </nav>
+            </div>
+
+            <!-- Right Panel: art -->
+            <div class="panel">
+                <nav class="nav-links">
+                    <a href="cv-art.html">art cv</a>
+                </nav>
+
+                <a href="creative.html" class="panel-image">
+                    <img src="photographs/fs-guerrilla/home-cat.jpg" alt="" loading="lazy" decoding="async">
+                </a>
+
+                <nav class="nav-links">
+                    <a href="creative.html">art</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="description-section">
+            <p class="description">
+                I'm a post-baccalaureate researcher and ASAS-SN Data Analyst at the Ohio State University Department of Astronomy
+            </p>
+            <p class="description">
+                I'm a photographer based in Columbus, Ohio
+            </p>
+        </div>
+
+        <footer>
+            © 2024-2026 Calder Lenhart. All rights reserved.
+        </footer>
     </div>
-    <footer style="text-align:left; font-size: 12px; padding: 10px;">
-        © 2020-2025 Calder Lenhart. All rights reserved.
-    </footer>
+
+    <div class="clock" id="clock"></div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const options = {
+                timeZone: 'America/New_York',
+                weekday: 'long',
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const formatter = new Intl.DateTimeFormat('en-US', options);
+            const parts = formatter.formatToParts(now);
+            
+            const weekday = parts.find(p => p.type === 'weekday').value;
+            const month = parts.find(p => p.type === 'month').value;
+            const day = parts.find(p => p.type === 'day').value;
+            const year = parts.find(p => p.type === 'year').value;
+            const hour = parts.find(p => p.type === 'hour').value;
+            const minute = parts.find(p => p.type === 'minute').value;
+            const second = parts.find(p => p.type === 'second').value;
+            
+            document.getElementById('clock').textContent = 
+                `${weekday} ${month} ${day} ${year} ${hour}:${minute}:${second}`;
+        }
+        
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -160,6 +338,14 @@
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "The Ohio State University" },
       "knowsAbout": ["Physics", "Astrophysics", "Photography"]
     }
+    </script>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>

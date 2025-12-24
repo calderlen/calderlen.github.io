@@ -13,56 +13,195 @@
     <title>Calder Lenhart | Art CV</title>
     <meta name="description" content="Download Calder Lenhart's art curriculum vitae featuring exhibitions, publications, and awards.">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body, html {
-            height: 100%;
-            margin: 0px;
-            padding: 0px;
-            font-family: 'Lato', Courier, monospace;
-        }
-        .main {
-            height: calc(100% - 48px);
-            display: flex;
-            flex-direction: row;
-            margin-top: 48px;
-            position: relative;
-        }
-        .main::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 1px;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
             background-color: #000;
-        }
-        .content {
-            padding-top: 30px;
+            color: #ccc;
         }
 
-        button {
-            margin-top: 20px;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 40px 60px 40px;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .contact-info a {
+            color: #ffd700;
+        }
+
+        .artist-statement {
+            font-style: italic;
+            color: #aaa;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #ffd700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .cv-item {
+            margin-bottom: 20px;
+        }
+
+        .cv-item .date {
+            font-size: 0.85em;
+            color: #888;
+            display: inline;
+            margin-right: 15px;
+        }
+
+        .cv-item .title {
+            display: inline;
+        }
+
+        .cv-item p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        .cv-item ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .cv-item li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #000;
+            padding: 12px 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 40px;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background-color: #fff;
+            text-decoration: none;
+        }
+
+        em {
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="cv.html">CV</a>
-        <a href="cv-art.html">Art CV</a>
-        <a href="https://github.com/calderlen">GitHub</a>
-        <a href="https://www.instagram.com/calderlen" >Instagram</a>
-        <a href="contact.html">Contact</a>
-    </div>
+    <a href="index.html" class="home-circle">Home</a>
     <div class="container">
-        <div class="content">
-            <a href="documents/CV-art.pdf" download>
-                <button>Download CV</button>
-            </a>
+        <h1>Calder Lenhart</h1>
+        <div class="contact-info">
+            <a href="https://calderlen.github.io">calderlen.github.io</a><br>
+            calderlen at gmail dot com
+        </div>
 
-            <embed src="documents/CV-art.pdf" width="100%" height="1400px" type="application/pdf">
+        <p class="artist-statement">
+            b. 2002 in Youngstown, OH. I live in Columbus, OH and work as a research scientist in the Ohio State Department of Astronomy. I photograph relationships between "natural" and "manmade" forms, questioning the dichotomy often taken for granted.
+        </p>
+
+        <a href="documents/CV-art.pdf" download class="download-btn">Download Full CV</a>
+
+        <h2>Two-Person Exhibitions</h2>
+        <div class="cv-item">
+            <span class="date">2025</span>
+            <span class="title"><em>Exposure</em>, Wild Gallery, Columbus, OH</span>
+        </div>
+
+        <h2>Group Exhibitions</h2>
+        <div class="cv-item">
+            <span class="date">2024</span>
+            <span class="title">Ohio Art League: 2024 Fall Juried Exhibition, Ross Art Museum, Delaware, OH</span>
+        </div>
+        <div class="cv-item">
+            <span class="date">2024</span>
+            <span class="title">WSA Art Show, WSA Studio, Columbus, OH</span>
+        </div>
+        <div class="cv-item">
+            <span class="date">2020</span>
+            <span class="title">2019 Northeastern Ohio Scholastic Art Awards Exhibition, Youngstown State University, Youngstown, OH</span>
+        </div>
+
+        <h2>Grants and Awards</h2>
+        <div class="cv-item">
+            <span class="date">2025</span>
+            <span class="title">Funds for Artists Grant, Greater Columbus Arts Council</span>
+        </div>
+        <div class="cv-item">
+            <span class="date">2024</span>
+            <span class="title">Ann Slusher Tuttle Scholarship, Ohio State University</span>
+        </div>
+        <div class="cv-item">
+            <span class="date">2023</span>
+            <span class="title">Undergraduate Research Scholarship, Ohio State University</span>
+        </div>
+        <div class="cv-item">
+            <span class="date">2023</span>
+            <span class="title">1st Place, MakeOHI/O</span>
+        </div>
+        <div class="cv-item">
+            <span class="date">2019</span>
+            <span class="title">Beautification Award, Youngstown CityScape</span>
+        </div>
+
+        <h2>Education</h2>
+        <div class="cv-item">
+            <span class="date">2024</span>
+            <span class="title">B.S., Physics, Astronomy and Astrophysics</span>
+            <p>Minors in Mathematics and History</p>
+            <p><em>Magna Cum Laude</em>, with Research Distinction in Astronomy and Astrophysics</p>
+            <p>Ohio State University, Columbus, OH</p>
         </div>
     </div>
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -78,6 +217,14 @@
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "The Ohio State University" },
       "knowsAbout": ["Physics", "Astrophysics", "Photography"]
     }
+    </script>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>
