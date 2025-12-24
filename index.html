@@ -36,6 +36,7 @@
             flex-direction: column;
             align-items: center;
             padding: 40px 20px;
+            position: relative;
         }
 
         .site-title {
@@ -221,8 +222,12 @@
             display: none;
         }
 
+        .scroll-indicator {
+            display: none;
+        }
+
         footer {
-            position: fixed;
+            position: absolute;
             bottom: 8px;
             right: 15px;
             margin: 0;
@@ -365,6 +370,67 @@
             .research-panel .panel-description a {
                 color: #87CEEB;
             }
+
+            .scroll-indicator {
+                display: block;
+                position: fixed;
+                left: 30px;
+                width: 3px;
+                height: 40px;
+                background-color: #fff;
+                z-index: 100;
+                opacity: 0.25;
+                transition: opacity 0.3s ease;
+                transform: translateY(-50%);
+            }
+
+            .scroll-indicator.scrolling {
+                opacity: 1;
+            }
+
+            .scroll-indicator.at-top {
+                opacity: 0 !important;
+            }
+
+            .scroll-indicator.at-bottom {
+                opacity: 0 !important;
+            }
+
+            .scroll-indicator-down {
+                top: calc(50% + 24px);
+            }
+
+            .scroll-indicator-down::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 14px solid #fff;
+            }
+
+            .scroll-indicator-up {
+                top: calc(50% - 24px);
+            }
+
+            .scroll-indicator-up::after {
+                content: '';
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 14px solid #fff;
+            }
+
+
         }
     </style>
 </head>
@@ -427,6 +493,8 @@
     </div>
 
     <div class="clock" id="clock"></div>
+    <div class="scroll-indicator scroll-indicator-up"></div>
+    <div class="scroll-indicator scroll-indicator-down"></div>
 
     <script>
         function updateClock() {
@@ -459,6 +527,58 @@
         
         updateClock();
         setInterval(updateClock, 1000);
+
+        // Scroll indicator opacity control
+        let scrollTimeout;
+        let lastScrollTop = 0;
+        const scrollIndicatorDown = document.querySelector('.scroll-indicator-down');
+        const scrollIndicatorUp = document.querySelector('.scroll-indicator-up');
+        
+        function updateArrowOpacity() {
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const isAtTop = currentScrollTop <= 0;
+            const isAtBottom = currentScrollTop + windowHeight >= documentHeight - 1; // -1 for rounding
+            
+            // Check if at top or bottom
+            if (isAtTop) {
+                scrollIndicatorUp.classList.add('at-top');
+            } else {
+                scrollIndicatorUp.classList.remove('at-top');
+            }
+            
+            if (isAtBottom) {
+                scrollIndicatorDown.classList.add('at-bottom');
+            } else {
+                scrollIndicatorDown.classList.remove('at-bottom');
+            }
+            
+            // Handle scrolling direction opacity
+            if (currentScrollTop > lastScrollTop) {
+                // Scrolling downward
+                scrollIndicatorDown.classList.add('scrolling');
+                scrollIndicatorUp.classList.remove('scrolling');
+            } else if (currentScrollTop < lastScrollTop) {
+                // Scrolling upward
+                scrollIndicatorUp.classList.add('scrolling');
+                scrollIndicatorDown.classList.remove('scrolling');
+            }
+            
+            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+            
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                scrollIndicatorDown.classList.remove('scrolling');
+                scrollIndicatorUp.classList.remove('scrolling');
+            }, 150);
+        }
+        
+        if (scrollIndicatorDown && scrollIndicatorUp) {
+            window.addEventListener('scroll', updateArrowOpacity);
+            // Check on page load
+            updateArrowOpacity();
+        }
     </script>
 
     <!-- Structured Data -->
