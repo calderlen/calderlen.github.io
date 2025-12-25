@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://calder.zone/hegemony.html">
+    <meta property="og:title" content="Calder Lenhart | Hegemony">
+    <meta property="og:description" content="Photographs from Calder Lenhart's Hegemony series.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calder.zone/hegemony.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Calder Lenhart | Hegemony</title>
+    <meta name="description" content="Photographs from Calder Lenhart's Hegemony series.">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=reply">
+    <script src="image-protection.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            font-style: italic;
+        }
+        .subtitle {
+            font-size: 0.75em;
+            color: #aaa;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+        }
+        .gallery {
+            display: block;
+        }
+        .photo {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .photo img {
+            max-width: 100%;
+            max-height: 100vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+        }
+        .photo {
+            position: relative;
+        }
+        .photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            background: transparent;
+            pointer-events: auto;
+            cursor: default;
+        }
+        .home-circle {
+            z-index: 10000 !important;
+            pointer-events: auto !important;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-circle">Home</a>
+    <div class="gallery">
+        <div class="photo">
+            <img src="photographs/fs-hegenomy/christmas-in-july.jpg" alt="" loading="lazy" decoding="async">
+            <div class="title"></div>
+            <div class="subtitle"></div>
+        </div>
+        <div class="photo">
+            <img src="photographs/fs-hegenomy/condolences.JPG" alt="" loading="lazy" decoding="async">
+            <div class="title"></div>
+            <div class="subtitle"></div>
+        </div>
+        <div class="photo">
+            <img src="photographs/fs-hegenomy/delicatessen.jpg" alt="" loading="lazy" decoding="async">
+            <div class="title"></div>
+            <div class="subtitle"></div>
+        </div>
+        <div class="photo">
+            <img src="photographs/fs-hegenomy/telco.jpg" alt="" loading="lazy" decoding="async">
+            <div class="title"></div>
+            <div class="subtitle"></div>
+        </div>
+        <div class="photo">
+            <img src="photographs/fs-hegenomy/what-happened.jpg" alt="" loading="lazy" decoding="async">
+            <div class="title"></div>
+            <div class="subtitle"></div>
+        </div>
+        <div class="photo">
+            <img src="photographs/fs-hegenomy/yarvin.JPG" alt="" loading="lazy" decoding="async">
+            <div class="title"></div>
+            <div class="subtitle"></div>
+        </div>
+    </div>
+
+    <script>
+        const photoSections = document.querySelectorAll('.photo');
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+
+        photoSections.forEach(section => observer.observe(section));
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Calder Lenhart",
+      "url": "https://calder.zone",
+      "sameAs": [
+        "https://www.instagram.com/calderlen",
+        "https://github.com/calderlen"
+      ],
+      "jobTitle": "Astrophysics Researcher & Photographer",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "The Ohio State University" },
+      "knowsAbout": ["Physics", "Astrophysics", "Photography"]
+    }
+    </script>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG' || e.target.closest('.photo')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'a' || e.key === 'p' || e.key === 'u' || e.key === 'i')) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        document.querySelectorAll('.photo img').forEach(img => {
+            img.onselectstart = function() { return false; };
+            img.onmousedown = function() { return false; };
+        });
+    </script>
+</body>
+</html>
+

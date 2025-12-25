@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://calder.zone/portraits.html">
-    <meta property="og:title" content="Calder Lenhart | Portraits">
-    <meta property="og:description" content="Portrait photography by Calder Lenhart featuring atmospheric imagery captured across the Midwest.">
+    <meta property="og:title" content="Calder Lenhart | Life">
+    <meta property="og:description" content="Life photography by Calder Lenhart featuring atmospheric imagery captured across the Midwest.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://calder.zone/portraits.html">
     <meta name="twitter:card" content="summary_large_image">
@@ -81,6 +81,22 @@
             z-index: 10;
             pointer-events: none;
         }
+        .photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            background: transparent;
+            pointer-events: auto;
+            cursor: default;
+        }
+        .home-circle {
+            z-index: 10000 !important;
+            pointer-events: auto !important;
+        }
     </style>
 </head>
 <body>
@@ -88,8 +104,23 @@
     <div class="gallery">
         <div class="photo">
             <img src="photographs/fs-portraits/jonathan-portrait.jpg" alt="" loading="lazy" decoding="async">
-            <div class="title">Jonathan</div>
-        <div class="subtitle">August 2021</div>
+            <div class="title"></div>
+            <div class="subtitle">August 2021</div>
+        </div>
+        <div class="photo">
+            <img src="photographs/fs-portraits/cat-night-bw-1.jpg" alt="" loading="lazy" decoding="async">
+            <div class="title"></div>
+            <div class="subtitle"></div>
+        </div>
+        <div class="photo">
+            <img src="photographs/fs-portraits/cat-night-bw-2.jpg" alt="" loading="lazy" decoding="async">
+            <div class="title"></div>
+            <div class="subtitle"></div>
+        </div>
+        <div class="photo">
+            <img src="photographs/fs-portraits/cat-night-bw-3.jpg" alt="" loading="lazy" decoding="async">
+            <div class="title"></div>
+            <div class="subtitle"></div>
         </div>
     </div>
 
