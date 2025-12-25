@@ -121,21 +121,6 @@
         }
     });
 
-    let devToolsOpen = false;
-    setInterval(function() {
-        if (window.outerHeight - window.innerHeight > 200 || 
-            window.outerWidth - window.innerWidth > 200) {
-            if (!devToolsOpen) {
-                devToolsOpen = true;
-                document.body.style.filter = 'blur(10px)';
-            }
-        } else {
-            if (devToolsOpen) {
-                devToolsOpen = false;
-                document.body.style.filter = 'none';
-            }
-        }
-    }, 500);
 
     document.addEventListener('DOMContentLoaded', function() {
         const images = document.querySelectorAll('img');
