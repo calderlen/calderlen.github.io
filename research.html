@@ -103,7 +103,7 @@
             text-align: left;
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
             box-shadow: 0 0 0 rgba(0,0,0,0);
-            font-size: 0.8em;
+            font-size: 1em;
             letter-spacing: 0.03em;
             cursor: pointer;
         }
@@ -113,15 +113,6 @@
             box-shadow: 0 0 12px rgba(135, 206, 235, 0.3);
         }
 
-        .pane::before {
-            content: attr(data-frame);
-            position: absolute;
-            top: 6px;
-            left: 8px;
-            font-size: 0.65em;
-            color: #666;
-            z-index: 1;
-        }
 
         .pane:hover {
             transform: scale(1.02);
@@ -170,11 +161,22 @@
             line-height: 1.3;
         }
 
-        .pane .date {
+        .pane .date-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
             margin: 2px 2px 6px 0;
-            font-size: 0.7em;
+        }
+
+        .pane .date {
+            font-size: 0.9em;
             color: #888;
-            display: block;
+        }
+
+        .pane .field {
+            font-size: 0.9em;
+            color: #888;
+            text-align: right;
         }
 
         .pane a {
@@ -330,27 +332,42 @@
     <a href="index.html" class="home-circle">Home</a>
     <div class="container">
         <div class="left-column">
-            <div class="pane active" data-frame="f01" data-date="2023–present">
+            <div class="pane active" data-frame="f01" data-date="2025–">
+                <h3>Searching for big dippers and dimming events in ASAS-SN light curves</h3>
+                <div class="date-row">
+                    <div class="date">2025–</div>
+                    <div class="field">observational astronomy</div>
+                </div>
+            </div>
+
+            <div class="pane" data-frame="f02" data-date="2023–">
                 <img src="research-figures/kelt-20b.png" alt="" loading="lazy" decoding="async">
                 <h3>Characterizing exoplanet atmospheres</h3>
-                <div class="date">2023–present</div>
+                <div class="date-row">
+                    <div class="date">2023–</div>
+                    <div class="field">observational astrophysics</div>
+                </div>
             </div>
 
-            <div class="pane" data-frame="f02" data-date="2022–2023">
-                <img src="research-figures/kelt-20b.png" alt="" loading="lazy" decoding="async">
+            <div class="pane" data-frame="f03" data-date="2022–2023">
                 <h3>Hydrothermal synthesis and testing of metal oxide nanostructures</h3>
-                <div class="date">2022–2023</div>
+                <div class="date-row">
+                    <div class="date">2022–2023</div>
+                    <div class="field">materials science</div>
+                </div>
             </div>
 
-            <div class="pane" data-frame="f03" data-date="2023">
-                <img src="research-figures/physics5680-researchposter.png" alt="" loading="lazy" decoding="async">
-                <h3>Linking Writing Processes to Writing Quality</h3>
-                <div class="date">2023</div>
-            </div>
         </div>
 
         <div class="right-column">
             <div class="content-display active" data-content="f01">
+                <h3>Searching for big dippers and dimming events in ASAS-SN light curves</h3>
+                <p>As an ASAS-SN Data Analyst at the Ohio State University Department of Astronomy, I lead a search for slowly varying stars and dimming events caused by dust structures. <a href="https://asas-sn.osu.edu/" class="content-link">ASAS-SN</a> (All-Sky Automated Survey for Supernovae) is a network of telescopes that continuously monitors the entire sky, measuring how bright millions of stars appear over time. These measurements create what astronomers call "light curves" - graphs showing how a star's brightness changes over days, months, and years.</p>
+                <p>Some stars show dramatic, long-lasting dips in brightness that can last for months or years. These "big dippers" are often caused by clouds of dust orbiting around the star, which periodically block our view. By systematically searching through millions of ASAS-SN light curves, we can identify these unusual stars and study the physical processes that create the dust structures around them.</p>
+                <p>I've built a Python pipeline to automatically process and analyze these light curves. The software searches for stars that show significant dimming events, filters out false detections, and helps us identify the most interesting candidates for further study. This work is being conducted in collaboration with <a href="https://www.astronomy.ohio-state.edu/kochanek.1/" class="content-link">Prof. Christopher Kochanek</a> and <a href="https://www.astronomy.ohio-state.edu/stanek.1/" class="content-link">Prof. Krzysztof Stanek</a> at Ohio State. Graduate student collaborators include Brayden JoHantgen (Clemson University) and Sydney Petz (Michigan State University). The codebase is available on <a href="https://github.com/calderlen/asassn-variability" class="content-link">GitHub</a>. A manuscript describing this work is in preparation.</p>
+            </div>
+
+            <div class="content-display" data-content="f02">
                 <h3>Characterizing exoplanet atmospheres</h3>
                 <p><strong>High-level overview:</strong></p>
                 <p>Ultra hot Jupiters are an exceptional class of <a href="https://en.wikipedia.org/wiki/Exoplanet" class="content-link">exoplanets</a>. They rapidly orbit their host stars in close proximity and have puffy atmospheres that reach more than 2,200 Kelvin. They are expected to be <a href="https://en.wikipedia.org/wiki/Tidal_locking" class="content-link">tidally locked</a>, meaning one hemisphere permanently faces the star, causing a large temperature gradient across the planet. With high-quality observations, we can study the extreme physical processes governing these atmospheres. We observed one such exoplanet, KELT-20b, with the Potsdam Echelle Polarimetric and Spectroscopic Instrument (PEPSI) on the Large Binocular Telescope (LBT) located in Mt. Graham, Arizona.</p>
@@ -378,17 +395,11 @@
                 </div>
             </div>
 
-            <div class="content-display" data-content="f02">
+            <div class="content-display" data-content="f03">
                 <h3>Hydrothermal synthesis and testing of metal oxide nanostructures</h3>
                 <p>During my research assistantship at the NSF Center for Industrial Sensors and Measurements with <a href="https://mse.osu.edu/people/akbar.1" class="content-link">Prof. Sheikh Akbar</a> in the Ohio State Department of Materials Science and Engineering, I focused on manufacturing nanoscale metal-oxide gas sensors (MOGS) aimed at detecting hazardous gases at trace concentrations. My responsibilities included synthesizing nanostructures of various compositions, depositing them on substrates with diodes, and testing their sensitivity using electrical measurements. For reactive sensors, I documented their morphology and composition with scanning electron microscopy and X-ray diffraction, archiving the results in the <a href="https://www.odorsdatabase.com/" class="content-link">Open Database of Resistive-type Sensors</a> (ODORS). I also compiled sensor data from current literature into ODORS, with the aim of developing a platform to identify trends in the selectivity and sensitivity of MOGS.</p>
             </div>
 
-            <div class="content-display" data-content="f03">
-                <h3>Linking Writing Processes to Writing Quality with Histogram-based Gradient Boosting Regression Tree</h3>
-                <p>I participated in the Linking Writing Processes to Writing Quality Kaggle competition, concluding in January 2024. I engineered dozens of features from provided keystroke log data based on recent computational linguistics and psychology literature, applied scikit-learn models, analyzed feature importance and model performance, and placed in the 63.3% on the <a href="https://www.kaggle.com/code/ryanholbrook/writing-processes-efficiency-lb" class="content-link">Efficiency Leaderboard</a>.</p>
-                <img src="research-figures/physics5680-researchposter.png" alt="" loading="lazy" decoding="async">
-                <p><em>This poster summarizes my solution.</em></p>
-            </div>
         </div>
     </div>
     <script type="application/ld+json">
