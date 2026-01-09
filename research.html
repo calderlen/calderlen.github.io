@@ -356,8 +356,26 @@
                 <h3>Searching for big dippers and dimming events in ASAS-SN light curves</h3>
                 <p>As an ASAS-SN Data Analyst at the Ohio State University Department of Astronomy, I lead a search for slowly varying stars and dimming events caused by dust structures. <a href="https://asas-sn.osu.edu/" class="content-link">ASAS-SN</a> (All-Sky Automated Survey for Supernovae) is a network of telescopes that continuously monitors the entire sky, measuring how bright millions of stars appear over time. These measurements create what astronomers call "light curves" - graphs showing how a star's brightness changes over days, months, and years.</p>
                 <p>Some stars show dramatic, long-lasting dips in brightness that can last for months or years. These "big dippers" are often caused by clouds of dust orbiting around the star, which periodically block our view. By systematically searching through millions of ASAS-SN light curves, we can identify these unusual stars and study the physical processes that create the dust structures around them.</p>
-                <p>I've built a Python pipeline to automatically process and analyze these light curves. The software searches for stars that show significant dimming events, filters out false detections, and helps us identify the most interesting candidates for further study. This work is being conducted in collaboration with <a href="https://www.astronomy.ohio-state.edu/kochanek.1/" class="content-link">Prof. Christopher Kochanek</a> and <a href="https://www.astronomy.ohio-state.edu/stanek.1/" class="content-link">Prof. Krzysztof Stanek</a> at Ohio State. Graduate student collaborators include Brayden JoHantgen (Clemson University) and Sydney Petz (Michigan State University). The codebase is available on <a href="https://github.com/calderlen/asassn-variability" class="content-link">GitHub</a>. A manuscript describing this work is in preparation.</p>
+                <p>To support this research, I developed <strong>MALCA</strong> (Multi-timescale ASAS-SN Light Curve Analysis), a software package designed to search for "big dipper" extrinsic variables, microlensing events, and long-term variability in ASAS-SN light curves. The pipeline architecture performs pre-filtering—including sparse light curve removal, multi-camera requirements, and VSX crossmatching—before running event detection to fit dip models and compute Bayes factors. The package also includes modules to score microlensing events (Paczyński curves) and perform injection-recovery testing to validate pipeline completeness and contamination. This work is being conducted in collaboration with <a href="https://www.astronomy.ohio-state.edu/kochanek.1/" class="content-link">Prof. Christopher Kochanek</a> and <a href="https://www.astronomy.ohio-state.edu/stanek.1/" class="content-link">Prof. Krzysztof Stanek</a> at Ohio State. The codebase is available on <a href="https://github.com/calderlen/MALCA" class="content-link">GitHub</a>.</p>
+<a href="https://github.com/calderlen/MALCA" target="_blank" style="
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #050505;
+    border: 1px solid #333;
+    color: #ddd;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    transition: all 0.2s ease;">
+    <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+    </svg>
+    <span style="font-weight: 500;">MALCA</span>
+</a>
             </div>
+
 
             <div class="content-display" data-content="f02">
                 <h3>Characterizing exoplanet atmospheres</h3>
